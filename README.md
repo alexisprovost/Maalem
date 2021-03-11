@@ -3,6 +3,9 @@ Application web d'aide scolaire
 
 ## Installation version de développement sur windows
 
+| Attention: ouvrir powershell ou cmd en tant qu'administrateur lors de l'installation! |
+| --- |
+
 [Installer chocolatey](https://chocolatey.org/install)
 
 [Installer git](https://chocolatey.org/packages/git)
