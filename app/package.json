@@ -1,0 +1,19 @@
+{
+  "name": "maalem",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "start": "node start app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/alexisprovost/AppAideEtudiants.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/alexisprovost/AppAideEtudiants/issues"
+  },
+  "homepage": "https://github.com/alexisprovost/AppAideEtudiants#readme"
+}
