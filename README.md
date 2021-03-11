@@ -30,3 +30,33 @@ cd AppAideEtudiants
 ```bash
 docker-compose up
 ```
+
+## Dev App
+
+```
+cd C:/app/AppAideEtudiants
+git pull
+```
+
+### Démarer l'app React
+```
+npm start
+```
+
+## Push sur github
+
+```
+git add *
+```
+* `*` modifiés
+* 'nom fichier'
+
+Message + commit
+```
+git commit -m "Message des modifications"
+```
+
+Envoie
+```
+git push origin main
+```
