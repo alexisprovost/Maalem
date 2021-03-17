@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .app {
@@ -60,7 +61,7 @@
   font-weight: 900;
   font-style: italic;
   margin-top: 50px;
-  color: #fff;
+  color: rgb(0, 0, 0);
   -webkit-touch-callout: none;
   -webkit-user-select: none;
   -khtml-user-select: none;

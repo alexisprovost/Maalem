@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import "./style.css";
 class Card extends React.Component {
   constructor(props) {
     super(props);
@@ -336,21 +337,8 @@ class Card extends React.Component {
       React.createElement("div", { className: "text" }, "DRAG THE CARD LEFT OR RIGHT")));
 
 
-  }}
-
-
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      data: [0, 1, 2, 3, 4, 5] }; // array denombrant le nombre de cartes, on doit fixer pour que l'app n'y soit pas relie
   }
-  render() {
-    var box = this.state.data.map((item, i) => {
-      console.log(i);
-      return /*#__PURE__*/React.createElement(Card, { key: i, no: i });
-    });
-    return /*#__PURE__*/React.createElement("div", { className: "app" }, box);
-  }}
+}
+export default Card;
 
-ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById("app"));
+//ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById("app"));
