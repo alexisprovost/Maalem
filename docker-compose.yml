@@ -1,24 +1,39 @@
 version: "3.7"
 
 services:
-  app:
-    image: node:12-alpine
-    restart: always
-    command: sh -c "yarn install && yarn run dev"
+  api:
+    build: ./api
+    command: npm start
+    restart: unless-stopped
     ports:
-      - 8080:8080
-    working_dir: /app
+      - 9000:9000
     volumes:
-      - ./:/app
+      - ./api:/usr/app
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password_to_put_in_git_ignore
 
-  db:
+  reactapp:
+    build: ./app
+    command: npm start
+    restart: unless-stopped
+    ports:
+      - 8080:3000
+    volumes:
+      - ./app:/usr/app
+
+  mongodb:
     image: mongo
+    container_name: mongodb
     restart: always
     volumes:
-      - './data:/data/db'
+      - './mongodb/database:/data/db'
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: password_to_put_in_git_ignore
+      PUID: 1000
+      PGID: 1000
+    ports:
+      - 27017:27017
+    restart: unless-stopped
+
