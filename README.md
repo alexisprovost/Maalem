@@ -26,7 +26,7 @@ cd AppAideEtudiants
 ```
 * Démarer le dock avec docker compose
 ```bash
-docker-compose up
+docker-compose up -d
 ```
 
 ## Push sur github
