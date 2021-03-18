@@ -10,13 +10,11 @@ Application web d'aide scolaire
 
 [Installer git](https://chocolatey.org/packages/git)
 
-* Installation de docker-cli avec chocolatey
+* Installation de docker avec chocolatey
 ```bash
 choco install docker-cli
-```
-* Installation de docker-compose avec chocolatey
-```bash
 choco install docker-compose
+choco install docker-desktop
 ```
 * Clone les fichiers depuis github avec git
 ```
@@ -29,18 +27,6 @@ cd AppAideEtudiants
 * Démarer le dock avec docker compose
 ```bash
 docker-compose up
-```
-
-## Dev App
-
-```
-cd C:/app/AppAideEtudiants
-git pull
-```
-
-### Démarer l'app React
-```
-npm start
 ```
 
 ## Push sur github
@@ -56,7 +42,7 @@ Message + commit
 git commit -m "Message des modifications"
 ```
 
-Envoie
+Push sur github
 ```
 git push origin main
 ```
