@@ -2,38 +2,42 @@ version: "3.7"
 
 services:
   api:
+    container_name: api
     build: ./api
     command: npm start
-    restart: unless-stopped
-    ports:
-      - 9000:9000
     volumes:
       - ./api:/usr/app
+    ports:
+      - 9000:9000
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password_to_put_in_git_ignore
+      MONGO_INITDB_ROOT_PASSWORD: v3JG2@wNeht9
+    depends_on:
+      - mongodb
+    restart: unless-stopped
 
   reactapp:
+    container_name: reactapp
     build: ./app
     command: npm start
-    restart: unless-stopped
-    ports:
-      - 8080:3000
     volumes:
       - ./app:/usr/app
+    ports:
+      - 8080:3000
+    restart: unless-stopped
 
   mongodb:
     image: mongo
     container_name: mongodb
-    restart: always
+    restart: unless-stopped
     volumes:
       - './mongodb/database:/data/db'
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: root
-      MONGO_INITDB_ROOT_PASSWORD: password_to_put_in_git_ignore
-      PUID: 1000
-      PGID: 1000
     ports:
       - 27017:27017
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: root
+      MONGO_INITDB_ROOT_PASSWORD: v3JG2@wNeht9
+      PUID: 1000
+      PGID: 1000
     restart: unless-stopped
 
