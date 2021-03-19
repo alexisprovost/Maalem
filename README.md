@@ -1,4 +1,4 @@
-# AppAideDevoir
+# Maalem
 Application web d'aide scolaire
 
 ## Installation version de développement sur windows
