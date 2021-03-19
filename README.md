@@ -8,7 +8,10 @@ Application web d'aide scolaire
 
 [Installer chocolatey](https://chocolatey.org/install)
 
-[Installer git](https://chocolatey.org/packages/git)
+*Installation de git
+```bash
+choco install git
+```
 
 * Installation de docker avec chocolatey
 ```bash
@@ -24,22 +27,22 @@ git clone https://github.com/alexisprovost/Maalem.git
 ```bash
 cd Maalem
 ```
-* Démarer le dock avec docker compose
+* Démarer le stack avec docker-compose
 ```bash
 docker-compose up -d
 ```
 
 ## Push sur github
-
 ```
 git add *
 ```
-* `*` modifiés
+* `*` fichiers modifiés
+ou
 * 'nom fichier'
 
-Message + commit
+Commit + Message
 ```
-git commit -m "Message des modifications"
+git commit -m "Message sur les modifications"
 ```
 
 Push sur github
