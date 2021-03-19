@@ -6,7 +6,7 @@ services:
     build: ./api
     command: npm start
     volumes:
-      - ./api:/usr/app
+      - ./api:/app
     ports:
       - 9000:9000
     environment:
@@ -21,7 +21,7 @@ services:
     build: ./app
     command: npm start
     volumes:
-      - ./app:/usr/app
+      - ./app:/app
     ports:
       - 8080:3000
     restart: unless-stopped
@@ -37,7 +37,6 @@ services:
     environment:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: v3JG2@wNeht9
-      PUID: 1000
-      PGID: 1000
+      MONGO_INITDB_DATABASE: app
     restart: unless-stopped
 

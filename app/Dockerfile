@@ -1,5 +1,5 @@
 FROM node:14-alpine
 
-WORKDIR /usr/app
+WORKDIR /app
 
-RUN npm i --silent
+USER node
