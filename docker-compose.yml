@@ -23,7 +23,7 @@ services:
     volumes:
       - ./app:/app
     ports:
-      - 8080:3000
+      - 3000:3000
     restart: unless-stopped
 
   mongodb:
