@@ -343,7 +343,21 @@ class Card extends React.Component {
         onTouchMove: this.handleTouchMove,
         onTouchEnd: this.handleTouchEnd }, /*#__PURE__*/
 
-        React.createElement("div", { className: "text" }, "DRAG THE CARD LEFT OR RIGHT"))
+        <div>
+          <div>
+            *insert title
+          </div>
+          <div>
+            *insert description
+          </div>
+          <div>
+            *insert points
+          </div>
+        </div>
+        //React.createElement("div", { className: "text" }, "DRAG THE CARD LEFT OR RIGHT")
+        
+        
+        )
         //React.createElement("div", {width:"300", height:"400", style: {backgroundImage: "url(" + dog + ")"}}, null))
       );
 

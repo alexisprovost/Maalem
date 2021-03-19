@@ -32,8 +32,10 @@
   transform-style: preserve-3d;
   -webkit-transform: perspective(800px);
   transform: perspective(800px);
+  background-image: url(dog.jpg);
 }
 
+/*
 .color0 {
   background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
 }
@@ -53,8 +55,12 @@
 .color4 {
   background-image: linear-gradient(to top, #c7eafd 0%, #e8198b 100%);
 }
+*/
+.color{
+  background-image: url(dog.jpg);
+}
 
-.text {
+.text { 
   text-align: center;
   font-family: "Montserrat", sans-serif;
   font-size: 28px;
