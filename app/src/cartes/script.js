@@ -1,6 +1,9 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import "./style.css";
+
+import dog from './dog.jpg';
+
 class Card extends React.Component {
   constructor(props) {
     super(props);
@@ -304,7 +307,7 @@ class Card extends React.Component {
     this.state.Posx < -window.innerWidth - 400)
     {
       cancelAnimationFrame(this.animate);
-    } else {
+    } else { 
       requestAnimationFrame(this.animate);
     }
     if (this.state.active) {
@@ -322,7 +325,13 @@ class Card extends React.Component {
   }
 
   render() {
+
+
+
     return /*#__PURE__*/(
+
+
+
       React.createElement("div", {
         id: "card" + this.props.no,
         className: "card color" + this.props.no,
@@ -334,8 +343,9 @@ class Card extends React.Component {
         onTouchMove: this.handleTouchMove,
         onTouchEnd: this.handleTouchEnd }, /*#__PURE__*/
 
-      React.createElement("div", { className: "text" }, "DRAG THE CARD LEFT OR RIGHT")));
-
+        React.createElement("div", { className: "text" }, "DRAG THE CARD LEFT OR RIGHT"))
+        //React.createElement("div", {width:"300", height:"400", style: {backgroundImage: "url(" + dog + ")"}}, null))
+      );
 
   }
 }

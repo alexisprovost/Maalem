@@ -1,6 +1,10 @@
-import Login from './Login';
+import LoginHooks from './LoginHooks';
+import LogoutHooks from './LogoutHooks';
+
 import testRun from "./cartes/testRun.js";
 import React, { Component } from "react";
+
+import './App.css';
 
 import {
   BrowserRouter as Router,
@@ -10,16 +14,28 @@ import {
   Redirect
 } from "react-router-dom";
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-       {/*All our Routes goes here!*/}
-       <Route exact path="/" component={Login} />
-       <Route exact path="/home" component={testRun} />
-      </Router>
-    );
-  }
+export default function App() {
+  return (
+    <Router>
+          <Route exact path="/home" component={testRun} />
+          <Route exact path="/" component={Welcome} />
+    </Router>
+  );
 }
 
-export default App;
+function Welcome() {
+  return(
+    <div className="App">
+      <LoginHooks />
+      <LogoutHooks />      
+    </div>    
+  ) 
+}
+
+function Home() {
+  return (
+      <div className="Home">
+        <testRun />
+      </div>
+    )
+}
