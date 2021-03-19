@@ -18,7 +18,7 @@ choco install docker-desktop
 ```
 * Clone les fichiers depuis github avec git
 ```
-git clone https://github.com/alexisprovost/AppAideEtudiants.git
+git clone https://github.com/alexisprovost/Maalem.git
 ```
 * Changer le répertoire vers le projet
 ```bash
