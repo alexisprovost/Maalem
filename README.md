@@ -27,7 +27,15 @@ git clone https://github.com/alexisprovost/Maalem.git
 ```bash
 cd Maalem
 ```
-* Démarer le stack avec docker-compose
+* Démarer le stack pour la première fois
+```bash
+(Windows) => firstrun.bat
+```
+ou
+```
+(Linux) => firstrun.sh
+```
+* Démarer le stack par la suite avec docker-compose
 ```bash
 docker-compose up -d
 ```
