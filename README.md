@@ -22,7 +22,7 @@ git clone https://github.com/alexisprovost/AppAideEtudiants.git
 ```
 * Changer le répertoire vers le projet
 ```bash
-cd AppAideEtudiants
+cd Maalem
 ```
 * Démarer le dock avec docker compose
 ```bash
