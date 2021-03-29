@@ -1,5 +1,7 @@
 import React from 'react';
+import Boutons from '../boutons/script';
 import Card from './script';
+
 class testRun extends React.Component {
     constructor(props) {
       super(props);
@@ -9,9 +11,16 @@ class testRun extends React.Component {
     render() {
       var box = this.state.data.map((item, i) => {
         console.log(i);
-        return /*#__PURE__*/React.createElement(Card, { key: i, no: i });
+        return React.createElement(Card, { key: i, no: i });
       });
-      return /*#__PURE__*/React.createElement("div", { className: "testrun" }, box);
+      return React.createElement("div", { className: "testrun" }, 
+      
+      <div>
+        {box}
+        <Boutons />
+      </div>
+);
     }
 }
+
 export default testRun;

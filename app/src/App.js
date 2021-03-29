@@ -1,7 +1,7 @@
 import LoginHooks from './LoginHooks';
 import LogoutHooks from './LogoutHooks';
-
 import testRun from "./cartes/testRun.js";
+import Boutons from "./boutons/script";
 import React, { Component } from "react";
 
 import './App.css';
@@ -36,6 +36,7 @@ function Home() {
   return (
       <div className="Home">
         <testRun />
+        <Boutons />
       </div>
     )
 }
