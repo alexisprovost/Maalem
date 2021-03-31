@@ -32,4 +32,11 @@ router.delete('/users/:id',function(req,res,next){
     });
 });
 
+router.get('/', function (req, res) {
+    res.json({
+        status: 'API Its Working',
+        message: 'MAALEM API'
+    });
+});
+
 module.exports = router;
