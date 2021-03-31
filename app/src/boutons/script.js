@@ -95,20 +95,21 @@ export default function Boutons() {
     return (
         <>
             <div>
-                <yesButton onClick={clickMe}>
+                <Button theme="blue" onClick={clickMe}>
                     Repondre
-                    </yesButton>
-            </div>
-            <div>
-                <noButton onClick={clickMe}>
-                    Ignorer
-                    </noButton>
+                    </Button>
             </div>
             <div>
                 <Button theme="pink" onClick={clickMe}>
                     Pink theme
               </Button>
             </div>
+            <div>
+                <noButton onClick={clickMe}>
+                    Ignorer
+                    </noButton>
+            </div>
+            
         </>
     );
 }
