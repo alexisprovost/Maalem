@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
+import { Container } from '../Popup/Container';
 
 const theme = {
     blue: {
@@ -36,9 +37,16 @@ const Button = styled.button`
     `;
 
 
-function clickMe() {
+function submitQuestion() {
     alert("You clicked me!");
 }
+
+const onSubmit = (event) => {
+    event.preventDefault(event);
+    console.log(event.target.name.value);
+    console.log(event.target.email.value);
+};
+
 function clickIgnore() {
     alert("Ignorer");
 }
@@ -84,9 +92,7 @@ export default function Boutons() {
                     </Button>
             </div>
             <div>
-                <Button class = "pink" theme="pink" onClick={clickMe}>
-                    Pink theme
-              </Button>
+                <Container triggerText={'Poser une Question'} onSubmit={onSubmit} />
             </div>
             <div>
                 <Button class = "ignore" theme= "red" onClick={clickIgnore}>
