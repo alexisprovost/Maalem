@@ -9,6 +9,14 @@ const theme = {
     pink: {
         default: "#e91e63",
         hover: "#ad1457"
+    },
+    green: {
+        default: "#32cd32",
+        hover: "#228b22"
+    },
+    red: {
+        default: "#ff0000",
+        hover: "#8b0000"
     }
 };
 const Button = styled.button`
@@ -27,49 +35,25 @@ const Button = styled.button`
     }
     `;
 
-const yesButton = styled.button`
-    background-color: ${(props) => theme[props.theme].default};
-    color: white;
-    padding: 5px 15px;
-    border-radius: 5px;
-    outline: 0;
-    text-transform: uppercase;
-    margin: 10px 0px;
-    cursor: pointer;
-    box-shadow: 0px 2px 2px lightgray;
-    transition: ease background-color 250ms;
-    &:hover {
-      background-color: ${(props) => theme[props.theme].hover};
-    }
-    `;
-    
-const noButton = styled.button`
-    background-color: ${(props) => theme[props.theme].default};
-    color: black;
-    padding: 5px 15px;
-    border-radius: 5px;
-    outline: 0;
-    text-transform: uppercase;
-    margin: 10px 0px;
-    cursor: pointer;
-    box-shadow: 0px 2px 2px lightgray;
-    transition: ease background-color 250ms;
-    &:hover {
-      background-color: ${(props) => theme[props.theme].hover};
-    }
-    `;
+
 function clickMe() {
     alert("You clicked me!");
 }
+function clickIgnore() {
+    alert("Ignorer");
+}
+function clickRepondre() {
+    alert("Repondre");
+}
 
-const ButtonToggle = styled(yesButton)`
+/*const ButtonToggle = styled(yesButton)`
         opacity: 0.7;
         ${({ active }) =>
         active &&
         `
           opacity: 1; 
         `}
-      `;
+      `;*/
 
 
 
@@ -95,19 +79,19 @@ export default function Boutons() {
     return (
         <>
             <div>
-                <Button theme="blue" onClick={clickMe}>
+                <Button class = "repondre" theme="green" onClick={clickRepondre}>
                     Repondre
                     </Button>
             </div>
             <div>
-                <Button theme="pink" onClick={clickMe}>
+                <Button class = "pink" theme="pink" onClick={clickMe}>
                     Pink theme
               </Button>
             </div>
             <div>
-                <noButton onClick={clickMe}>
+                <Button class = "ignore" theme= "red" onClick={clickIgnore}>
                     Ignorer
-                    </noButton>
+                    </Button>
             </div>
             
         </>

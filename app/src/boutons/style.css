@@ -2,3 +2,13 @@
   font-family: sans-serif;
   text-align: center;
 }
+.ignore {
+  position:relative; 
+  left:1000px; 
+  top:1000px;
+}
+.repondre {
+  position:absolute; 
+  left:0px; 
+  top:500px;
+}
