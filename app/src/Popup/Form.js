@@ -1,10 +1,11 @@
 import React from 'react';
 
+//Form
 export const Form = ({ onSubmit }) => {
   return (
     <form onSubmit={onSubmit}>
 
-      <h2>Poser une question</h2>
+      <h3>Poser une question</h3>
 
       <div className="form-group">
         <label htmlFor="title">Titre</label>
@@ -33,10 +34,11 @@ export const Form = ({ onSubmit }) => {
 
       <div className="form-group">
         <button className="form-control btn btn-primary" type="submit">
-          Submit
+          Soumettre
         </button>
       </div>
     </form>
   );
 };
+
 export default Form;
