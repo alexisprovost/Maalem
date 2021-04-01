@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { Container } from '../Popup/Container';
+import "./style.css";
 
 const theme = {
     blue: {
@@ -86,16 +87,16 @@ const types = ["Cash", "Credit Card"];
 export default function Boutons() {
     return (
         <>
-            <div>
-                <Button class = "repondre" theme="green" onClick={clickRepondre}>
+            <div class="repondre">
+                <Button theme="green" onClick={clickRepondre}>
                     Repondre
                     </Button>
             </div>
             <div>
                 <Container triggerText={'Poser une Question'} onSubmit={onSubmit} />
             </div>
-            <div>
-                <Button class = "ignore" theme= "red" onClick={clickIgnore}>
+            <div className="ignoreHolder">
+                <Button className="ignore" theme= "red" onClick={clickIgnore}>
                     Ignorer
                     </Button>
             </div>
