@@ -23,12 +23,13 @@ const theme = {
 };
 const Button = styled.button`
     background-color: ${(props) => theme[props.theme].default};
+    display: block;
+    margin:auto; 
     color: white;
     padding: 5px 15px;
     border-radius: 5px;
     outline: 0;
     text-transform: uppercase;
-    margin: 10px 0px;
     cursor: pointer;
     box-shadow: 0px 2px 2px lightgray;
     transition: ease background-color 250ms;
