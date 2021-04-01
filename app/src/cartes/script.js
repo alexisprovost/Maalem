@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import "./style.css";
 
-import dog from './dog.jpg';
+import dog from './02.jpg';
 
 class Card extends React.Component {
   constructor(props) {

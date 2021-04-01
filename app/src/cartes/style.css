@@ -32,7 +32,8 @@
   transform-style: preserve-3d;
   -webkit-transform: perspective(800px);
   transform: perspective(800px);
-  background-image: url(dog.jpg);
+  background-image: url(02.jpg);
+  background-size: 100% auto;
 }
 
 /*
