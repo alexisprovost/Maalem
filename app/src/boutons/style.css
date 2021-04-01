@@ -2,14 +2,13 @@
   font-family: sans-serif;
   text-align: center;
 }
-.ignore {
-  position:block;
-  margin:auto; 
+
+.buttonHolder {
+  width: 100%;
 }
-.ignoreHolder{
-  width:100%;
-}
-.repondre {
-  position:block;
-  margin:auto;  
+
+.buttonGroup {
+  margin: auto;
+  display: block;
+  width: fit-content;
 }

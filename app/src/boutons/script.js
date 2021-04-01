@@ -23,8 +23,10 @@ const theme = {
 };
 const Button = styled.button`
     background-color: ${(props) => theme[props.theme].default};
-    display: block;
-    margin:auto; 
+    display: inline-block;
+    margin:auto;
+    margin-left: 1rem;
+    margin-right: 1rem; 
     color: white;
     padding: 5px 15px;
     border-radius: 5px;
@@ -33,6 +35,7 @@ const Button = styled.button`
     cursor: pointer;
     box-shadow: 0px 2px 2px lightgray;
     transition: ease background-color 250ms;
+    min-width: 10rem;
     &:hover {
       background-color: ${(props) => theme[props.theme].hover};
     }
@@ -88,20 +91,15 @@ const types = ["Cash", "Credit Card"];
 export default function Boutons() {
     return (
         <>
-            <div class="repondre">
-                <Button theme="green" onClick={clickRepondre}>
-                    Repondre
-                    </Button>
-            </div>
             <div>
                 <Container triggerText={'Poser une Question'} onSubmit={onSubmit} />
             </div>
-            <div className="ignoreHolder">
-                <Button className="ignore" theme= "red" onClick={clickIgnore}>
-                    Ignorer
-                    </Button>
+            <div className="buttonHolder">
+                <div className="buttonGroup">
+                    <Button theme="green" onClick={clickRepondre}>Repondre</Button>
+                    <Button theme="red" onClick={clickIgnore}>Ignorer</Button>
+                </div>
             </div>
-            
         </>
     );
 }
