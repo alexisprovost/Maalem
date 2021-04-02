@@ -1,6 +1,30 @@
 version: "3.7"
 
 services:
+  nginx:
+    container_name: nginx
+    image: nginx:1.15-alpine
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./data/nginx:/etc/nginx/conf.d
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    command: "/bin/sh -c 'while :; do sleep 6h & wait $${!}; nginx -s reload; done & nginx -g \"daemon off;\"'"
+    restart: unless-stopped
+
+  certbot:
+    container_name: certbot
+    image: certbot/certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    depends_on:
+      - "nginx"
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    restart: unless-stopped
+
   api:
     container_name: api
     build: ./api
@@ -8,7 +32,7 @@ services:
     volumes:
       - ./api:/app
     ports:
-      - 9000:443
+      - 9000:9000
     depends_on:
       - mongodb
     restart: unless-stopped
@@ -23,12 +47,13 @@ services:
       - ./app:/app
     ports:
       - 3000:3000
+    depends_on:
+      - "api"
     restart: unless-stopped
 
   mongodb:
     image: mongo
     container_name: mongodb
-    restart: unless-stopped
     volumes:
       - './mongodb/database:/data/db'
     ports:

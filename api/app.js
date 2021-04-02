@@ -1,12 +1,9 @@
 const express = require('express');
-const mongoose = require('mongoose');
 
 //Setup express app + https + port
 require('dotenv').config();
 const app = express();
-const https = require('https');
-const fs = require('fs');
-const port = 443;
+const port = 9000;
 
 //Connection to DB
 require('./initDB')();
@@ -16,7 +13,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //Init routes
-app.use('/api',require('./routes/api'));
+app.use('/',require('./routes/api'));
 
 // error handling middleware
 app.use(function(err,req,res,next){
@@ -24,11 +21,7 @@ app.use(function(err,req,res,next){
   res.status(422).send({error: err.message});
 });
 
-const httpsOptions = {
-  key: fs.readFileSync('./cert.key'),
-  cert: fs.readFileSync('./cert.pem')
-}
-
-const server = https.createServer(httpsOptions, app).listen(port, () => {
+// listen for requests
+app.listen(port || 9000, function(){
   console.log('API server running at ' + port);
-})
+});
