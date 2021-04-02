@@ -6,7 +6,7 @@ require('dotenv').config();
 const app = express();
 const https = require('https');
 const fs = require('fs');
-const port = process.env.PORT;
+const port = 443;
 
 //Connection to DB
 require('./initDB')();
