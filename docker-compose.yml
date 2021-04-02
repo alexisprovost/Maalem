@@ -12,6 +12,8 @@ services:
     depends_on:
       - mongodb
     restart: unless-stopped
+    networks:
+      - api-network
 
   reactapp:
     container_name: reactapp
@@ -36,4 +38,6 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: v3JG2@wNeht9
       MONGO_INITDB_DATABASE: app
     restart: unless-stopped
+    networks:
+      - api-network
 
