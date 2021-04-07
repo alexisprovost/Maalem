@@ -15,7 +15,7 @@ function LoginHooks() {
       `Logged in successfully! Welcome ${res.profileObj.name}. \nCheck console for full profile object.`
     );
     refreshTokenSetup(res);  
-    window.location.replace("http://localhost:3000/home");
+    window.location.replace("/home");
   };
 
   const onFailure = (res) => {
