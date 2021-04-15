@@ -3,6 +3,9 @@ import ReactDOM from 'react-dom';
 import NavBar from './components/Nav';
 import Foot from './components/Foot';
 import Chat from './components/chatPreview';
+import Feed from './Feed';
+import Boutons from "./boutons/script";
+
 import { Container, Button,  ButtonGroup, DropdownButton, MenuItem, Row, Col, Navbar } from 'react-bootstrap';
 
 export default function MainPage() {
@@ -15,7 +18,10 @@ export default function MainPage() {
               <Container className="themed-container" fluid={true}><Chat/></Container>
             </Col>
             <Col style={{backgroundColor: "green"}}>
-              <Container className="themed-container" fluid={true}>Col 2 (main page)</Container>
+              <Container className="themed-container" fluid={true}>
+                <Feed />
+
+              </Container>
             </Col>
           </Row>
         </div>
