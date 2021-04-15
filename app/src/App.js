@@ -3,6 +3,7 @@ import LogoutHooks from './LogoutHooks';
 import testRun from "./cartes/testRun.js";
 import Boutons from "./boutons/script";
 import React, { Component } from "react";
+import MainPage from './MainPage';
 
 import './App.css';
 
@@ -19,6 +20,7 @@ export default function App() {
     <Router>
           <Route exact path="/home" component={testRun} />
           <Route exact path="/" component={Welcome} />
+          <Route exact path="/newhome" component={HomePage} />
     </Router>
   );
 }
@@ -39,4 +41,10 @@ function Home() {
         <Boutons />
       </div>
     )
+}
+
+function HomePage() {
+  return (
+    <MainPage />
+  )
 }
