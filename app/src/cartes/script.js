@@ -133,7 +133,7 @@ class Card extends React.Component {
             }, 10);
           });
 
-        } else if (mouseCurrPosX < width * 20 / 100) {
+        } else if (mouseCurrPosX < width * 45 / 100) {
           //check swipe gauche
           let restX, restY;
           if (mouseCurrPosX > width / 2) {
@@ -344,7 +344,7 @@ class Card extends React.Component {
         onTouchStart: this.handleTouchStart,
         onTouchMove: this.handleTouchMove,
         onTouchEnd: this.handleTouchEnd }, /*#__PURE__*/
-
+        /*
         <div>
           <div>
             *insert title
@@ -356,6 +356,7 @@ class Card extends React.Component {
             *insert points
           </div>
         </div>
+        */
         //React.createElement("div", { className: "text" }, "DRAG THE CARD LEFT OR RIGHT")
         
         

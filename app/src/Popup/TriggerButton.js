@@ -5,6 +5,7 @@ const Trigger = ({ triggerText, buttonRef, showModal }) => {
       className="btn btn-lg btn-danger center modal-button"
       ref={buttonRef}
       onClick={showModal}
+      style={{marginTop: "2rem", marginBottom: "2rem", position: "absolute", right: "10%"}}
     >
       {triggerText}
     </button>

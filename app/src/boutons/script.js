@@ -91,11 +91,6 @@ const types = ["Cash", "Credit Card"];
 export default function Boutons() {
     return (
         <>
-            {/* A JSX comment 
-            <div>
-                <Container triggerText={'Poser une Question'} onSubmit={onSubmit} />
-            </div>
-            */}
             <div className="buttonHolder">
                 <div className="buttonGroup">
                     <Button theme="green" onClick={clickRepondre}>Repondre</Button>

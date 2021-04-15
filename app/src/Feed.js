@@ -1,40 +1,25 @@
 import React from 'react';
+import { render } from 'react-dom';
 import Boutons from "./boutons/script";
 import Card from './cartes/script';
+import { Container } from './Popup/Container';
 
-class testRun extends React.Component {
-    constructor(props) {
-      super(props);
-      this.state = {
-        data: [2,3,1988] }; // array denombrant le nombre de cartes, on doit fixer pour que l'app n'y soit pas relie
-    }
-
-    render() {
-      
-      
-      return(
-        <div className="testrun">
-            
-            {this.state.data.map((item, i) => {
-              return(
-                <Card key={i} no={i}/>
-              )
-            })}
-            
-        </div>
-      )
-
-    }
-}
+const onSubmit = (event) => {
+  event.preventDefault(event);
+  console.log(event.target.name.value);
+  console.log(event.target.email.value);
+};
 
 export default function Feed() {
     return (
         <div>
-            <testRun></testRun>
-            <Boutons />
+          <Container triggerText={'Poser une Question'} onSubmit={onSubmit}/>
+          <div>
+            <Card key={1} no={1}/>
+          </div>
+          <Boutons />
         </div>
-
-    )
+    )  
 }
 
 
