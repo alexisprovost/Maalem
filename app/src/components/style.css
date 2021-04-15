@@ -1,0 +1,21 @@
+.receiverName{
+    font-weight: bold;
+    position:absolute; 
+    left:50%;
+    line-height: 3rem;
+}
+
+.messageFrom {
+    background-color: #828282;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 80%;
+}
+
+.messageTo {
+    background-color: #828282;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 80%;
+    float: right;
+}
