@@ -37,7 +37,6 @@ function Welcome() {
 function Home() {
   return (
       <div className="Home">
-        <testRun />
         <Boutons />
       </div>
     )
