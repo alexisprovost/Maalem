@@ -27,7 +27,7 @@ export default function Chat() {
             </div>
         </div>
         <div className="chatInput">
-            
+            test input
         </div>
         </>
     );   
