@@ -6,7 +6,7 @@ export default function Foot() {
         position: "fixed",bottom: '0',
         width: '100%',
         height: '60px',
-        'line-height': '60px'
+        'lineHeight': '60px'
         }}>
             <div className="container">
                 <span className="text-muted">Place sticky footer content here.</span>
