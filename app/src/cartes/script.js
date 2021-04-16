@@ -1,8 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import "./style.css";
-
-import dog from './02.jpg';
 
 class Card extends React.Component {
   constructor(props) {
@@ -357,15 +354,9 @@ class Card extends React.Component {
           </div>
         </div>
         */
-        //React.createElement("div", { className: "text" }, "DRAG THE CARD LEFT OR RIGHT")
-        
-        
         )
-        //React.createElement("div", {width:"300", height:"400", style: {backgroundImage: "url(" + dog + ")"}}, null))
       );
 
   }
 }
 export default Card;
-
-//ReactDOM.render( /*#__PURE__*/React.createElement(App, null), document.getElementById("app"));

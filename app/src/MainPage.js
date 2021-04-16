@@ -1,12 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import NavBar from './components/Nav';
 import Foot from './components/Foot';
 import Chat from './components/chatPreview';
 import Feed from './Feed';
-import Boutons from "./boutons/script";
 
-import { Container, Button,  ButtonGroup, DropdownButton, MenuItem, Row, Col, Navbar } from 'react-bootstrap';
+import { Container, Row, Col} from 'react-bootstrap';
 
 export default function MainPage() {
     return (

@@ -1,6 +1,5 @@
-import React, { useState } from "react";
+import React from "react";
 import styled from "styled-components";
-import { Container } from '../Popup/Container';
 import "./style.css";
 
 const theme = {
@@ -41,52 +40,12 @@ const Button = styled.button`
     }
     `;
 
-
-function submitQuestion() {
-    alert("You clicked me!");
-}
-
-const onSubmit = (event) => {
-    event.preventDefault(event);
-    console.log(event.target.name.value);
-    console.log(event.target.email.value);
-};
-
 function clickIgnore() {
     alert("Ignorer");
 }
 function clickRepondre() {
     alert("Repondre");
 }
-
-/*const ButtonToggle = styled(yesButton)`
-        opacity: 0.7;
-        ${({ active }) =>
-        active &&
-        `
-          opacity: 1; 
-        `}
-      `;*/
-
-
-
-
-
-const types = ["Cash", "Credit Card"];
-
-
-/*function ToggleGroup() {
-    const [active, setActive] = useState(types[0]);
-    return (
-        <div>
-            {types.map((type) => (
-                <ButtonToggle active={active === type} onClick={() => setActive(type)}>
-                    {type}
-                </ButtonToggle>
-            ))}
-        </div>
-    );
-}*/
 
 export default function Boutons() {
     return (

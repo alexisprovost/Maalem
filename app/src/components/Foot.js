@@ -1,5 +1,4 @@
-import react from 'react';
-import ReactDOM, { render } from 'react-dom';
+import React from 'react';
 
 export default function Foot() {
     return (

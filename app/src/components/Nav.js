@@ -1,5 +1,4 @@
-import react from 'react';
-import ReactDOM from 'react-dom';
+import React from 'react';
 import { Navbar } from 'react-bootstrap';
 
 export default function NavBar() {

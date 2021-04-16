@@ -1,5 +1,4 @@
 import React from 'react';
-import { render } from 'react-dom';
 import Boutons from "./boutons/script";
 import Card from './cartes/script';
 import { Container } from './Popup/Container';
