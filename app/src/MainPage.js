@@ -12,7 +12,7 @@ export default function MainPage() {
         <NavBar /> 
         <div>        
           <Row>
-            <Col xs="3" style={{backgroundColor: "red"}}>
+            <Col xs="3" style={{backgroundColor:"red", height: "89vh"} }>
               <Container className="themed-container" fluid={true}><Chat/></Container>
             </Col>
             <Col style={{backgroundColor: "green"}}>
@@ -23,7 +23,7 @@ export default function MainPage() {
             </Col>
           </Row>
         </div>
-        <Foot />
+        <Foot/>
       </div>  
     );
 }

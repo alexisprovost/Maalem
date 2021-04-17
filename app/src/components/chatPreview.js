@@ -1,8 +1,14 @@
 import React from 'react';
+import loadChat from './chatLoader';
 import "./style.css";
 
+
+
 export default function Chat() {
+    
+        
     return (
+        
         <>
         <div className="contactHolder">
             <span className="receiverName">
@@ -17,7 +23,7 @@ export default function Chat() {
                 'borderRadius': '50%'}}></span>
             </div>
         </div>
-        <div className="messagesHolder">
+        <div className="messagesHolder" onload={loadChat()}>
             <div className="messageFrom">
                 test
             </div>
@@ -28,6 +34,11 @@ export default function Chat() {
         <div className="chatInput">
             test input
         </div>
+        <script src="chatLoader.js">{
+            window.onload
+            (loadChat())
+}</script>
         </>
-    );   
+        
+    );
 }

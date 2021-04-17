@@ -10,6 +10,7 @@
     padding: 1rem;
     border-radius: 10px;
     width: 80%;
+    margin-top: 1rem;
 }
 
 .messageTo {
@@ -18,4 +19,5 @@
     border-radius: 10px;
     width: 80%;
     float: right;
+    margin-top: 1rem;
 }
