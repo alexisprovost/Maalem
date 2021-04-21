@@ -38,10 +38,7 @@ app.get('/auth/failed', function (req, res) {
   });
 });
 app.get('/auth/success', isLoggedIn, function (req, res) {
-  res.json({
-    status: 'success',
-    message: `Hi ${req.user.displayName} the login with google was successful!`
-  });
+  res.json(req.user);
 });
 
 app.get('/auth/google',
