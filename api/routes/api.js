@@ -3,7 +3,7 @@ const router = express.Router();
 const User = require('../models/user');
 
 // get a list of users from the database
-router.get('/users',function(req,res,next){
+router.get('/users', function(req,res,next){
     User.find({}).then(function(users){
         res.send(users);
     }).catch(next);
@@ -34,8 +34,8 @@ router.delete('/users/:id',function(req,res,next){
 
 router.get('/', function (req, res) {
     res.json({
-        status: 'API Its Working',
-        message: 'MAALEM API'
+        status: 'success',
+        message: 'REST API for Maalem version 1'
     });
 });
 
