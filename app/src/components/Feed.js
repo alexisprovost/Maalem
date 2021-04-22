@@ -20,8 +20,10 @@ export default function Feed() {
           </div>
           <Boutons />
         </div>
+        
     )  
 }
+
 
 
 

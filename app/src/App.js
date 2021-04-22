@@ -6,14 +6,19 @@ import HomePage from './HomePage';
 
 import {
   BrowserRouter as Router,
-  Route
+  Route,
+  Redirect
 } from "react-router-dom";
+import Switch from 'react-bootstrap/esm/Switch';
 
 export default function App() {
   return (
-    <Router>
+    <Switch>     
+      <Router>
+          <Redirect exact from="/" to="/home" />
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/app" component={MainPage} />
-    </Router>
+      </Router>
+    </Switch>
   );
 }
