@@ -34,10 +34,6 @@ export default function Chat() {
         <div className="chatInput">
             test input
         </div>
-        <script src="chatLoader.js">{
-            window.onload
-            (loadChat())
-}</script>
         </>
         
     );

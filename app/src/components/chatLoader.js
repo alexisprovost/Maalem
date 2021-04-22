@@ -6,9 +6,9 @@ export default function loadChat(){
     var temp2;
     
     for (let i = 0; i < arrayLength; i++) {
-      temp = document.createElement('div');
-      temp.className = 'messageFrom';
-      temp.innerHTML = arrayVariable[i];
-      document.getElementById("messagesHolder").appendChild(temp);
+    //  temp = document.createElement('div');
+      //temp.className = 'messageFrom';
+      //temp.innerHTML = arrayVariable[i];
+      //document.getElementById("messagesHolder").appendChild(temp);
     }
 }
