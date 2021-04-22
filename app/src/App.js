@@ -12,13 +12,13 @@ import {
 import Switch from 'react-bootstrap/esm/Switch';
 
 export default function App() {
-  return (
-    <Switch>     
-      <Router>
-          <Redirect exact from="/" to="/home" />
+  return (    
+      <Router>         
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/app" component={MainPage} />
+          <Route exact path="/">
+            <Redirect to="/home" />
+          </Route>
       </Router>
-    </Switch>
   );
 }
