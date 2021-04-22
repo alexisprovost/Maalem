@@ -15,7 +15,7 @@ export default function MainPage() {
             <Col xs="3" style={{backgroundColor:"red", height: "89vh"} }>
               <Container className="themed-container" fluid={true}><Sidechat/></Container>
             </Col>
-            <Col style={{backgroundColor: "green"}}>
+            <Col style={{backgroundColor: "green", height: "89vh"}}>
               <Container className="themed-container" fluid={true}>
                 <Feed />
 
