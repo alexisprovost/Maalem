@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const User = require('../models/user');
+const Card = require('../models/card');
 
 //Check if user id logged in for API access 
 const isLoggedIn = (req, res, next) => {
@@ -11,8 +12,11 @@ const isLoggedIn = (req, res, next) => {
     }
 }
 
-router.get('/user', isLoggedIn, function (req, res, next) {
-    
+// get a list of users from the database
+router.get('/cards', function (req, res, next) {
+    Card.find({}).then(function (cards) {
+        res.send(cards);
+    }).catch(next);
 });
 
 // get a list of users from the database

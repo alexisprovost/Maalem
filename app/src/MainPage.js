@@ -1,8 +1,8 @@
 import React from 'react';
 import NavBar from './components/Nav';
 import Foot from './components/Foot';
-import Chat from './components/chatPreview';
-import Feed from './Feed';
+import Sidechat from './components/Sidechat';
+import Feed from './components/Feed';
 
 import { Container, Row, Col} from 'react-bootstrap';
 
@@ -13,7 +13,7 @@ export default function MainPage() {
         <div>        
           <Row>
             <Col xs="3" style={{backgroundColor:"red", height: "89vh"} }>
-              <Container className="themed-container" fluid={true}><Chat/></Container>
+              <Container className="themed-container" fluid={true}><Sidechat/></Container>
             </Col>
             <Col style={{backgroundColor: "green"}}>
               <Container className="themed-container" fluid={true}>
