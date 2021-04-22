@@ -1,7 +1,7 @@
 import React from 'react';
-import Boutons from "./boutons/script";
-import Card from './cartes/script';
-import { Container } from './Popup/Container';
+import Boutons from "../boutons/script";
+import Card from '../cartes/script';
+import { Container } from '../Popup/Container';
 
 const onSubmit = (event) => {
   event.preventDefault(event);
