@@ -6,8 +6,9 @@ class Card extends React.Component {
     super(props);
     this.state = {
       subject: null,
-      swipeLeft: false,
-      swipeRight: false,
+      swipedLeft: false,
+      swipedRight: false,
+      showCard: true,
       active: false,
       move: false,
       limit: false,
@@ -27,7 +28,8 @@ class Card extends React.Component {
       vx: 0.0,
       vy: 0.0,
       mass: 0.7,
-      damping: 0.8 };
+      damping: 0.8
+    };
 
     this.handleDown = this.handleDown.bind(this);
     this.handleUp = this.handleUp.bind(this);
@@ -48,7 +50,8 @@ class Card extends React.Component {
       move: true,
       active: true,
       mouseStartPosX: e.clientX,
-      mouseStartPosY: e.clientY });
+      mouseStartPosY: e.clientY
+    });
 
   }
 
@@ -58,7 +61,8 @@ class Card extends React.Component {
       move: true,
       active: true,
       mouseStartPosX: e.touches[0].screenX,
-      mouseStartPosY: e.touches[0].screenY });
+      mouseStartPosY: e.touches[0].screenY
+    });
 
     console.log(this.state.mouseStartPosX);
   }
@@ -74,6 +78,7 @@ class Card extends React.Component {
         let height = window.innerHeight;
         let width = window.innerWidth;
         let maxX = width - width * 20 / 100;
+
         function map_range(value, low1, high1, low2, high2) {
           return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
         }
@@ -82,11 +87,11 @@ class Card extends React.Component {
           mouseRange = width - mouseRange;
         }
         let damping = map_range(
-        mouseRange,
-        width / 2,
-        width - width * 10 / 100,
-        0.6,
-        0.8);
+          mouseRange,
+          width / 2,
+          width - width * 10 / 100,
+          0.6,
+          0.8);
 
 
         this.setState({
@@ -94,7 +99,8 @@ class Card extends React.Component {
           Posy,
           damping,
           mouseCurrPosX,
-          mouseCurrPosY });
+          mouseCurrPosY
+        });
 
 
         if (mouseCurrPosX > width - width * 20 / 100) {
@@ -113,22 +119,24 @@ class Card extends React.Component {
           let limit = true;
           let move = false;
           let damping = 0.06;
-          let swipeLeft = false;
-          let swipeRight = true;
-          console.log(swipeRight + " ,"+ swipeLeft);
-          this.setState(
-          {
-            restX,
-            restY,
-            limit,
-            move,
-            damping },
+          let swipedRight = true;
+          console.log("right");
+          this.setState({
+              restX,
+              restY,
+              limit,
+              move,
+              damping
+            },
 
-          () => {
-            setTimeout(() => {
-              window.cancelAnimationFrame(this.animate);
-            }, 10);
-          });
+            () => {
+              setTimeout(() => {
+                this.setState({swipedRight});
+              }, 2000);
+              setTimeout(() => {
+                window.cancelAnimationFrame(this.animate);
+              }, 10);
+            });
 
         } else if (mouseCurrPosX < width * 45 / 100) {
           //check swipe gauche
@@ -146,15 +154,26 @@ class Card extends React.Component {
           let limit = true;
           let move = false;
           let damping = 0.06;
-          let swipeLeft = true;
-          let swipeRight = false;
-          console.log(swipeRight + " ,"+ swipeLeft);
+          let swipedLeft = true;
+          console.log("Left");
           this.setState({
+            showCard: false,
             restX,
             restY,
             limit,
             move,
-            damping });
+            damping
+          },
+          
+          () => {
+            setTimeout(() => {
+              this.setState({swipedLeft});
+            }, 2000);
+            setTimeout(() => {
+              window.cancelAnimationFrame(this.animate);
+              this.state.showCard = false;
+            }, 10);
+          });
 
         }
       }
@@ -173,6 +192,7 @@ class Card extends React.Component {
         let height = window.innerHeight;
         let width = window.innerWidth;
         let maxX = width - width * 20 / 100;
+
         function map_range(value, low1, high1, low2, high2) {
           return low2 + (high2 - low2) * (value - low1) / (high1 - low1);
         }
@@ -181,11 +201,11 @@ class Card extends React.Component {
           mouseRange = width - mouseRange;
         }
         let damping = map_range(
-        mouseRange,
-        width / 2,
-        width - width * 10 / 100,
-        0.6,
-        0.8);
+          mouseRange,
+          width / 2,
+          width - width * 10 / 100,
+          0.6,
+          0.8);
 
 
         this.setState({
@@ -193,7 +213,8 @@ class Card extends React.Component {
           Posy,
           damping,
           mouseCurrPosX,
-          mouseCurrPosY });
+          mouseCurrPosY
+        });
 
 
         if (mouseCurrPosX > width - width * 10 / 100) {
@@ -211,19 +232,20 @@ class Card extends React.Component {
           let limit = true;
           let move = false;
           let damping = 0.08;
-          this.setState(
-          {
-            restX,
-            restY,
-            limit,
-            move,
-            damping },
+          this.setState({
+              restX,
+              restY,
+              limit,
+              move,
+              damping
+            },
 
-          () => {
-            setTimeout(() => {
-              window.cancelAnimationFrame(this.animate);
-            }, 10);
-          });
+            () => {
+              setTimeout(() => {
+                window.cancelAnimationFrame(this.animate);
+                this.showCard = false;
+              }, 10);
+            });
 
         } else if (mouseCurrPosX < width * 10 / 100) {
           let restX, restY;
@@ -245,7 +267,8 @@ class Card extends React.Component {
             restY,
             limit,
             move,
-            damping });
+            damping
+          });
 
         }
       }
@@ -254,45 +277,48 @@ class Card extends React.Component {
 
   handleUp() {
     this.setState({
-      move: false });
+      move: false
+    });
 
   }
 
   handleTouchEnd() {
     this.setState({
-      move: false });
+      move: false
+    });
 
   }
 
   updateCard() {
     if (!this.state.move) {
-      this.setState(
-      {
-        fx: -this.state.k * (this.state.Posx - this.state.restX),
-        fy: -this.state.k * (this.state.Posy - this.state.restY) },
-
-      () => {
-        this.setState(
-        {
-          ax: this.state.fx / this.state.mass,
-          ay: this.state.fy / this.state.mass },
+      this.setState({
+          fx: -this.state.k * (this.state.Posx - this.state.restX),
+          fy: -this.state.k * (this.state.Posy - this.state.restY)
+        },
 
         () => {
-          this.setState(
-          {
-            vx: this.state.damping * (this.state.vx + this.state.ax),
-            vy: this.state.damping * (this.state.vy + this.state.ay) },
+          this.setState({
+              ax: this.state.fx / this.state.mass,
+              ay: this.state.fy / this.state.mass
+            },
 
-          () => {
-            this.setState({
-              Posx: this.state.Posx + this.state.vx,
-              Posy: this.state.Posy + this.state.vy });
+            () => {
+              this.setState({
+                  vx: this.state.damping * (this.state.vx + this.state.ax),
+                  vy: this.state.damping * (this.state.vy + this.state.ay)
+                },
 
-          });
+                () => {
+                  this.setState({
+                    Posx: this.state.Posx + this.state.vx,
+                    Posy: this.state.Posy + this.state.vy
+                  });
+
+                });
+
+            });
 
         });
-
-      });
 
     }
   }
@@ -300,47 +326,47 @@ class Card extends React.Component {
   animate() {
     let el = document.getElementById("card" + this.props.no);
     if (
-    this.state.Posx > window.innerWidth + 400 ||
-    this.state.Posx < -window.innerWidth - 400)
-    {
+      this.state.Posx > window.innerWidth + 400 ||
+      this.state.Posx < -window.innerWidth - 400) {
       cancelAnimationFrame(this.animate);
-    } else { 
+    } else {
       requestAnimationFrame(this.animate);
     }
     if (this.state.active) {
       el.style.transform =
-      "translate(" +
-      this.state.Posx +
-      "px" +
-      "," +
-      this.state.Posy +
-      "px) rotate(" +
-      this.state.Posx / 9 +
-      "deg) perspective(800px)";
+        "translate(" +
+        this.state.Posx +
+        "px" +
+        "," +
+        this.state.Posy +
+        "px) rotate(" +
+        this.state.Posx / 9 +
+        "deg) perspective(800px)";
       this.updateCard();
     }
   }
 
-  
+
 
   render() {
 
 
 
-    return /*#__PURE__*/(
+    return /*#__PURE__*/ (
 
 
 
       React.createElement("div", {
-        id: "card" + this.props.no,
-        className: "card color" + this.props.no,
-        onMouseDown: this.handleDown,
-        onMouseMove: this.handleMove,
-        onMouseUp: this.handleUp,
-        onMouseLeave: this.handleUp,
-        onTouchStart: this.handleTouchStart,
-        onTouchMove: this.handleTouchMove,
-        onTouchEnd: this.handleTouchEnd }, /*#__PURE__*/
+          id: "card" + this.props.no,
+          className: "card color" + this.props.no,
+          onMouseDown: this.handleDown,
+          onMouseMove: this.handleMove,
+          onMouseUp: this.handleUp,
+          onMouseLeave: this.handleUp,
+          onTouchStart: this.handleTouchStart,
+          onTouchMove: this.handleTouchMove,
+          onTouchEnd: this.handleTouchEnd
+        }, /*#__PURE__*/
         /*
         <div>
           <div>
@@ -354,8 +380,8 @@ class Card extends React.Component {
           </div>
         </div>
         */
-        )
-      );
+      )
+    );
 
   }
 }
