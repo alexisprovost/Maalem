@@ -12,7 +12,9 @@ const onSubmit = (event) => {
 export default function Feed() {
     return (
         <div>
-          <Container triggerText={'Poser une Question'} onSubmit={onSubmit}/>
+          <div className="formHolder">
+            <Container triggerText={'Poser une Question'} onSubmit={onSubmit}/>
+          </div>
           <div>
             <Card key={1}/>
           </div>

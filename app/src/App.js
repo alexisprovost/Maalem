@@ -4,8 +4,6 @@ import React from "react";
 import MainPage from './MainPage';
 import HomePage from './HomePage';
 
-import './App.css';
-
 import {
   BrowserRouter as Router,
   Route
