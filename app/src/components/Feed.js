@@ -14,7 +14,7 @@ export default function Feed() {
         <div>
           <Container triggerText={'Poser une Question'} onSubmit={onSubmit}/>
           <div>
-            <Card key={1} no={1}/>
+            <Card key={1}/>
           </div>
           <Boutons />
         </div>
