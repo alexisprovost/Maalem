@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react'
+import { Navigation } from './components/navigation'
 import { Header } from './components/header'
 import { Features } from './components/features'
 import { Team } from './components/Team'
@@ -19,6 +20,7 @@ const App = () => {
 
   return (
     <div>
+      <Navigation />
       <Header data={landingPageData.Header} />
       <Features data={landingPageData.Features} />
       <Team data={landingPageData.Team} />

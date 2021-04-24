@@ -1,8 +1,8 @@
 {
     "Header": {
 
-        "title": "We are a Landing Page",
-        "paragraph": "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis sed dapibus leo nec ornare diam sed commodo nibh ante facilisis bibendum."
+        "title": "Avez-vous besoin d'aide?",
+        "paragraph": "Maalem est une application d'aide-étudiante qui permet aux étudiants de s'entre aider durant leur parcours scolaire. Posez des questions et aidez les autres selon vos forces!"
 
     },
     "About": {
@@ -85,23 +85,18 @@
         }
     ],
     "Team": [{
-            "img": "img/team/01.jpg",
-            "name": "John Doe",
-            "job": "Director"
+            "img": "img/team/ryan.jpg",
+            "name": "Ryan Guzelian",
+            "job": ""
         },
         {
-            "img": "img/team/02.jpg",
-            "name": "Mike Doe",
-            "job": "Senior Designer"
+            "img": "img/team/alexis.jpg",
+            "name": "Alexis Provost",
+            "job": ""
         }, {
-            "img": "img/team/03.jpg",
-            "name": "Jane Doe",
-            "job": "Senior Designer"
-        },
-        {
-            "img": "img/team/04.jpg",
-            "name": "Karen Doe",
-            "job": "Project Manager"
+            "img": "img/team/alec.jpg",
+            "name": "Alec Tufenkjian",
+            "job": ""
         }
     ],
     "Contact": {
@@ -113,24 +108,24 @@
         "youtube": "youtube.com"
     },
     "Features": [{
-            "icon": "fa fa-comments-o",
-            "title": "Lorem ipsum",
-            "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+            "icon": "fa fa-mobile",
+            "title": "Facile à utiliser",
+            "text": "Notre plateforme possède une interface simple que vous pouvez y accéder facilement de votre téléphone portable."
         },
         {
-            "icon": "fa fa-bullhorn",
-            "title": "Lorem ipsum",
-            "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+            "icon": "fa fa-comments-o",
+            "title": "Chat intégré",
+            "text": "On en a assez des systèmes de messageries lents et complexes! Parlez avec d'autres étudiants directement et à temps réel."
+        },
+        {
+            "icon": "fa fa-usd",
+            "title": "100% Gratuit",
+            "text": "Nous ne vous demanderons jamais de payer ou même de saisir votre carte de crédit pour accéder à cette application."
         },
         {
             "icon": "fa fa-group",
-            "title": "Lorem ipsum",
-            "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
-        },
-        {
-            "icon": "fa fa-magic",
-            "title": "Lorem ipsum",
-            "text": "Lorem ipsum dolor sit amet placerat facilisis felis mi in tempus eleifend pellentesque natoque etiam."
+            "title": "Effective",
+            "text": "Nous vous jumelerons uniquement avec des étudiants qui maîtrisent le sujet concerné."
         }
     ]
 }
