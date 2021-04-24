@@ -51,7 +51,8 @@ app.get('/auth/google/callback',
     failureRedirect: '/auth/failed'
   }),
   function (req, res) {
-    res.redirect('/auth/success');
+    res.redirect('http://localhost:3000/app');
+    //res.redirect('/auth/success');
   });
 
 app.get('/auth/logout', (req, res) => {

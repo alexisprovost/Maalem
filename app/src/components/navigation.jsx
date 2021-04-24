@@ -6,7 +6,7 @@ export const Navigation = (props) => {
           <a className='navbar-brand page-scroll' href='#page-top'>
             Maalem
           </a>{' '}
-          <a href="/app" class="page-scroll" style={{
+          <a href={'http://localhost:9000/auth/google'} class="page-scroll" style={{
               position: 'absolute', 
               right: '100px', 
               fontFamily: 'Lato', 
