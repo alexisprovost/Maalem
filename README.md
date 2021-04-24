@@ -19,6 +19,9 @@ choco install docker-cli
 choco install docker-compose
 choco install docker-desktop
 ```
+
+[Installer Docker Desktop](https://www.docker.com/products/docker-desktop)
+
 * Clone les fichiers depuis github avec git
 ```
 git clone https://github.com/alexisprovost/Maalem.git
@@ -39,6 +42,7 @@ ou
 ```bash
 docker-compose up -d
 ```
+### Sur l'instance de développement, il faut fermer les conteneurs NGINX et CERTBOT
 
 ## Push sur github
 ```
