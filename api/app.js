@@ -6,7 +6,20 @@ require('./passport-setup.js');
 require('dotenv').config();
 
 //Use cors to block unwanted domains to use our API
-const cors = require('cors')
+const cors = require('cors');
+
+var whitelist = ['http://localhost:3000', 'http://localhost:9000']
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
+app.use(cors(corsOptions));
 
 //Connection to DB
 require('./initDB')();
