@@ -14,7 +14,7 @@ require('./initDB')();
 //Cookie name and key
 app.use(cookieSession({
   name: 'session',
-  keys: ['keyyy', 'keyyy2']
+  keys: ['19d8539b0d7942a5a6dfdeaf6803ca27', '84714838c7da4797bbe0f911b291d309']
 }))
 
 //Check if user id logged in for API access 
@@ -61,10 +61,8 @@ app.get('/auth/logout', (req, res) => {
   res.redirect("/");
 })
 
-app.get('/auth', function (req, res) {
-  res.json({
-    message: 'user /google to use google oauth2'
-  });
+app.get('/auth', isLoggedIn, function (req, res) {
+  res.json(req.user);
 });
 
 app.get('/', function (req, res) {
