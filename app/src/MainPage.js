@@ -12,10 +12,10 @@ export default function MainPage() {
         <NavBar /> 
         <div>        
           <Row>
-            <Col xs="3" style={{backgroundColor:"red", height: "89vh", "z-index":"1"} }>
+            <Col xs="3" style={{backgroundColor:"#ececec", height: "89vh", "z-index":"1"} }>
               <Container className="themed-container" fluid={true}><Sidechat/></Container>
             </Col>
-            <Col style={{backgroundColor: "green", height: "89vh"}}>
+            <Col style={{backgroundColor: "f7f7f7", height: "89vh"}}>
               <Container className="themed-container" fluid={true}>
                 <Feed />
 

@@ -1,5 +1,3 @@
-import LoginHooks from './LoginHooks';
-import LogoutHooks from './LogoutHooks';
 import React from "react";
 import MainPage from './MainPage';
 import HomePage from './HomePage';
