@@ -354,11 +354,14 @@ class Card extends React.Component {
 
     return /*#__PURE__*/ (
 
-
-
+      
       React.createElement("div", {
           id: "card" + this.props.no,
           className: "card color" + this.props.no,
+          style: {
+            backgroundImage: this.props.img
+          },
+          
           onMouseDown: this.handleDown,
           onMouseMove: this.handleMove,
           onMouseUp: this.handleUp,
@@ -366,21 +369,20 @@ class Card extends React.Component {
           onTouchStart: this.handleTouchStart,
           onTouchMove: this.handleTouchMove,
           onTouchEnd: this.handleTouchEnd
-        }, /*#__PURE__*/
-        /*
+        },
+        
+
         <div>
-          <div>
-            *insert title
-          </div>
-          <div>
-            *insert description
-          </div>
-          <div>
-            *insert points
-          </div>
+          <div>{this.props.title}</div>
+          <div>{this.props.subject}</div>
+          <div>{this.props.description}</div>
+          <div>{this.props.reward}</div>
+          <div>{this.props.author}</div>
         </div>
-        */
+        
+        
       )
+      
     );
 
   }
