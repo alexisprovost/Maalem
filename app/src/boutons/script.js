@@ -50,7 +50,7 @@ function clickRepondre() {
 export default function Boutons() {
     return (
         <>
-            <div className="buttonHolder">
+            <div className="buttonHolder" style={{marginTop: '450px'}}>
                 <div className="buttonGroup">
                     <Button theme="green" onClick={clickRepondre}>Repondre</Button>
                     <Button theme="red" onClick={clickIgnore}>Ignorer</Button>

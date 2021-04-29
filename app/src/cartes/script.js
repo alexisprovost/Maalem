@@ -359,7 +359,10 @@ class Card extends React.Component {
           id: "card" + this.props.no,
           className: "card color" + this.props.no,
           style: {
-            backgroundImage: this.props.img
+            backgroundImage: this.props.img,
+            position: 'absolute',
+            zIndex: this.props.no + 1,
+            marginTop: '150px'
           },
           
           onMouseDown: this.handleDown,
