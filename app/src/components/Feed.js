@@ -9,6 +9,7 @@ const onSubmit = (event) => {
   console.log(event.target.email.value);
 };
 
+/*
 let myData = [ ];
 
 let card1 = {
@@ -42,6 +43,25 @@ let card3 = {
 myData.push(card1);
 myData.push(card2);
 myData.push(card3);
+*/
+
+
+async function getCards() {
+  let url = 'http://localhost:9000/1/cards';
+  try {
+      let res = await fetch(url);
+      return await res.json();
+  } catch (error) {
+      console.log(error);
+  }
+}
+
+async function readCards() {
+  let data = await getCards();
+  return data;
+}
+
+let myCards = readCards();
 
 export default function Feed() {
     return (
@@ -50,15 +70,16 @@ export default function Feed() {
             <Container triggerText={'Poser une Question'} onSubmit={onSubmit}/>
           </div>
           <div>
-            {myData.map((card, i) => 
-              <Card 
-                no={i}
-                title={card.title} 
-                subject={card.subject}
-                description={card.description}
-                author={card.author}
-                reward={card.reward}
-                img={card.img}
+            {
+              myCards.map((card, i) => 
+                <Card 
+                  no={i}
+                  title={card.title} 
+                  subject={card.subject}
+                  description={card.description}
+                  author={card.author}
+                  reward={card.reward}
+                  img={card.img}
               />)
             }
           </div>
@@ -67,9 +88,6 @@ export default function Feed() {
         
     )  
 }
-
-
-
 
 
 
