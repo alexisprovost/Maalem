@@ -2,14 +2,33 @@ import React from 'react';
 
 //Form
 export const Form = ({ onSubmit }) => {
+  const handleSubmit = (event) => {
+    event.preventDefault(event);
+
+    const requestOptions = {
+      
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title: document.getElementById('title').value, 
+                             subject: document.getElementById('subject').value,
+                            description: document.getElementById('description').value,
+                            comments: 'msg',
+                            author: 'me',
+                            reward: document.getElementById('recompense').value})
+                             
+  };
+  fetch('http://localhost:9000/1/cards', requestOptions)
+      .then(response => response.json())
+      .then(data => this.setState({ postId: data.id }));
+  };
   return (
-    <form onSubmit={onSubmit}>
+    <form onSubmit={handleSubmit}>
 
       <h3>Poser une question</h3>
 
       <div className="form-group">
         <label htmlFor="title">Titre</label>
-        <input className="form-control" id="title" />
+        <input className="form-control" id="title"/>
       </div>
 
       <div className="form-group">
@@ -28,7 +47,7 @@ export const Form = ({ onSubmit }) => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="recompense">Récompense</label>
+        <label htmlFor="recompense">RÃ©compense</label>
         <input type="number" className="form-control" id="recompense" />
       </div>
 

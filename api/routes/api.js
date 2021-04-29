@@ -10,6 +10,13 @@ router.get('/cards', function (req, res, next) {
     }).catch(next);
 });
 
+// add a new User to database
+router.post('/cards', function (req, res, next) {
+    Card.create(req.body).then(function (Card) {
+        res.send(Card);
+    }).catch(next);
+});
+
 // get a list of users from the database
 router.get('/users', function (req, res, next) {
     User.find({}).then(function (users) {
