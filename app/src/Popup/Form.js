@@ -12,14 +12,12 @@ export const Form = ({ onSubmit }) => {
       body: JSON.stringify({ title: document.getElementById('title').value, 
                              subject: document.getElementById('subject').value,
                             description: document.getElementById('description').value,
-                            comments: 'msg',
                             author: 'me',
                             reward: document.getElementById('recompense').value})
                              
   };
   fetch('http://localhost:9000/1/cards', requestOptions)
-      .then(response => response.json())
-      .then(data => this.setState({ postId: data.id }));
+      .then(response => response.json());
   };
   return (
     <form onSubmit={handleSubmit}>
