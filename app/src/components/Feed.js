@@ -1,4 +1,5 @@
 import React from 'react';
+import { render } from 'react-dom';
 import Boutons from "../boutons/script";
 import Card from '../cartes/script';
 import { Container } from '../Popup/Container';
@@ -9,58 +10,43 @@ const onSubmit = (event) => {
   console.log(event.target.email.value);
 };
 
-let cards = [];
+  export default class Feed extends React.Component {
 
-async function getCards() {
-  let url = 'http://localhost:9000/1/cards';
-  try {
-      let res = await fetch(url,{});
-      return await res.json();
-  } catch (error) {
-      console.log(error);
-  }
-}
+    constructor() {
+      super();
+      this.state = { data: [] };
+    }
 
-async function readCards() {
-  let data = await getCards();
-  data.map((card) => {
-    cards.push(card.author);
-  })  
-}
+    async componentDidMount() {
+      const response = await fetch(`http://localhost:9000/1/cards`);
+      const json = await response.json();
+      this.setState({ data: json });
+    }
 
-let myCards = readCards();
-
- export default function Feed() {
-
-    return (
+    render() {
+      return (
         <div>
           <div className="formHolder">
             <Container triggerText={'Poser une Question'} onSubmit={onSubmit}/>
           </div>
-          <div>
-            
+          <div>            
             {
-
-            
-            
-              cards.map((card, i) => 
-                <Card 
-                  no={i}
-                  //title={card.title} 
-                  //subject={card.subject}
-                  //description={card.description}
-                  author={card.author}
-                  //reward={card.reward}
-                  //img={card.img}
-              />)
-
+              this.state.data.map(card => (
+                <Card
+                  author = {card.author}
+                  description = {card.description}
+                  subject = {card.subject}
+                  reward = {card.reward}
+                  title = {card.title}
+                  img = {'url(' + card.image[0] + ')'}
+                />
+              ))
             }
           </div>
           <Boutons />
         </div>
-        
-    )  
-}
-
+      )
+    }
+  }
 
 
