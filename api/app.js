@@ -1,13 +1,22 @@
+const http = require('http');
 const express = require('express');
-const app = express();
+const socketio = require('socket.io');
+const cors = require('cors');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+
+//Req
 require('./passport-setup.js');
 require('dotenv').config();
 
-//Use cors to block unwanted domains to use our API
-const cors = require('cors');
+const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 
+//Express init
+const app = express();
+const server = http.createServer(app);
+const io = socketio(server);
+
+//Settings for cors
 var whitelist = ['http://localhost:3000', 'http://localhost:9000']
 var corsOptions = {
   origin: function (origin, callback) {
@@ -88,7 +97,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //Init routes for api
-app.use('/1/', cors(corsOptions), require('./routes/api'));
+app.use('/1/', cors(corsOptions), isLoggedIn, require('./routes/api'));
 
 // error handling middleware
 app.use(function (err, req, res, next) {
@@ -98,7 +107,40 @@ app.use(function (err, req, res, next) {
   });
 });
 
-// listen for requests
-app.listen(process.env.PORT || 9000, function () {
-  console.log('API server running at ' + process.env.PORT);
+//Socket IO
+io.on('connect', (socket) => {
+  socket.on('join', ({ name, room }, callback) => {
+    const { error, user } = addUser({ id: socket.id, name, room });
+
+    if(error) return callback(error);
+
+    socket.join(user.room);
+
+    socket.emit('message', { user: 'admin', text: `${user.name}, welcome to room ${user.room}.`});
+    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!` });
+
+    io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
+
+    callback();
+  });
+
+  socket.on('sendMessage', (message, callback) => {
+    const user = getUser(socket.id);
+
+    io.to(user.room).emit('message', { user: user.name, text: message });
+
+    callback();
+  });
+
+  socket.on('disconnect', () => {
+    const user = removeUser(socket.id);
+
+    if(user) {
+      io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
+      io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});
+    }
+  })
 });
+
+//Setup server
+server.listen(process.env.PORT || 9000, () => console.log(`API has started.`));
