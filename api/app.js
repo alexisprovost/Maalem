@@ -6,9 +6,9 @@ require('./passport-setup.js');
 require('dotenv').config();
 
 //Use cors to block unwanted domains to use our API
-//const cors = require('cors');
+const cors = require('cors');
 
-var whitelist = ['http://localhost:3000/*', 'http://localhost:9000/*']
+var whitelist = ['http://localhost:3000', 'http://localhost:9000']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -18,7 +18,6 @@ var corsOptions = {
     }
   }
 }
-
 
 //Connection to DB
 require('./initDB')();
@@ -89,7 +88,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //Init routes for api
-app.use('/1/', require('./routes/api'));
+app.use('/1/', cors(corsOptions), require('./routes/api'));
 
 // error handling middleware
 app.use(function (err, req, res, next) {

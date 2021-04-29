@@ -49,7 +49,7 @@ myData.push(card3);
 async function getCards() {
   let url = 'http://localhost:9000/1/cards';
   try {
-      let res = await fetch(url);
+      let res = await fetch(url,{});
       return await res.json();
   } catch (error) {
       console.log(error);
