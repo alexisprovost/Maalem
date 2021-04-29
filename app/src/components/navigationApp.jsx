@@ -2,7 +2,7 @@ import { Navbar, Nav, NavDropdown, Form, FormControl, Button} from 'react-bootst
 
 export const NavBar = () => {
     return (
-        <Navbar bg="light" expand="lg" style={{zIndex:'1'}}>
+        <Navbar bg="light" expand="lg" style={{zIndex:'2'}}>
             <Navbar.Brand href="#home">Maalem</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
