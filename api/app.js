@@ -97,7 +97,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //Init routes for api
-app.use('/1/', cors(corsOptions), isLoggedIn, require('./routes/api'));
+app.use('/1/', cors(corsOptions), require('./routes/api'));
 
 // error handling middleware
 app.use(function (err, req, res, next) {
