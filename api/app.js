@@ -72,13 +72,12 @@ app.get('/auth/google/callback',
   }),
   function (req, res) {
     res.redirect('http://localhost:3000/app');
-    //res.redirect('/auth/success');
   });
 
 app.get('/auth/logout', (req, res) => {
   req.session = null;
   req.logout();
-  res.redirect("/");
+  res.redirect("http://localhost:3000/home");
 })
 
 app.get('/auth', isLoggedIn, function (req, res) {

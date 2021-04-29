@@ -361,7 +361,7 @@ class Card extends React.Component {
           style: {
             backgroundImage: this.props.img,
             position: 'absolute',
-            zIndex: this.props.no + 1,
+            zIndex: 0,
             marginTop: '150px'
           },
           

@@ -1,5 +1,5 @@
 import React from 'react';
-import NavBar from './components/Nav';
+import { NavBar } from './components/navigationApp.jsx';
 import Foot from './components/Foot';
 import Sidechat from './components/Sidechat';
 import Feed from './components/Feed';
