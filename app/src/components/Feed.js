@@ -31,8 +31,9 @@ const onSubmit = (event) => {
           </div>
           <div>            
             {
-              this.state.data.map(card => (
+              this.state.data.map((card, i) => (
                 <Card
+                  no = {i}
                   author = {card.author}
                   description = {card.description}
                   subject = {card.subject}
