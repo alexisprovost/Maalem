@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import "./style.css";
+import { ListGroup, Button as B} from 'react-bootstrap';
 
 const theme = {
     blue: {
@@ -50,10 +51,10 @@ function clickRepondre() {
 export default function Boutons() {
     return (
         <>
-            <div className="buttonHolder" style={{marginTop: '450px'}}>
+            <div className="buttonHolder" style={{marginTop: '550px'}}>
                 <div className="buttonGroup">
-                    <Button theme="green" onClick={clickRepondre}>Repondre</Button>
-                    <Button theme="red" onClick={clickIgnore}>Ignorer</Button>
+                    <B variant="success" style={{width: '150px', marginRight: '10px'}}>Répondre</B>{' '}
+                    <B variant="danger" style={{width: '150px', marginLeft: '10px'}}>Ignorer</B>
                 </div>
             </div>
         </>

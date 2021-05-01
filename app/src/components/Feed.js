@@ -16,26 +16,35 @@ const onSubmit = (event) => {
 
     constructor() {
       super();
-      this.state = { data: [] };
+      
+      this.state = { 
+        cards: []
+      };
     }
 
     async componentDidMount() {
       const response = await fetch(`http://localhost:9000/1/cards`);
       const json = await response.json();
-      this.setState({ data: json });
+      this.setState({ 
+        cards: json
+      });
     }
 
     render() {
       return (
         <div>
-          <div>
-          <Button variant="success" style={{marginTop:'20px'}}>
-           {} <Badge variant="success">9</Badge>
-          </Button>
+          <div style={{marginTop:'20px'}}>
+            <Button variant="primary">
+            {this.props.filter} <Badge variant="primary">N/A</Badge>
+            </Button>            
+            <Button variant="primary" style={{position: 'absolute', right: '30px'}}>
+            Points <Badge variant="primary">N/A</Badge>
+            </Button>
           </div>
+          
           <div>            
             {
-              this.state.data.map((card, i) => (
+              this.state.cards.map((card, i) => (
                 <Card
                   no = {i}
                   author = {card.author}
@@ -44,12 +53,12 @@ const onSubmit = (event) => {
                   reward = {card.reward}
                   title = {card.title}
                   img = {card.image}
-                />
+               />
               ))
             }
           </div>
           <div>
-            
+            <Boutons />
           </div>
 
         </div>

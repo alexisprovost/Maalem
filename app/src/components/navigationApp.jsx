@@ -1,30 +1,26 @@
 import React,{useState} from 'react';
-import { Navbar, Nav, NavDropdown, Form, FormControl, Button, Badge} from 'react-bootstrap';
+import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import { Container } from '../Popup/Container';
 
-const onSubmit = (event) => {
-    event.preventDefault(event);
-    console.log(event.target.name.value);
-    console.log(event.target.email.value);
-};
+export class NavBar extends React.Component {
 
-
-    const handleSelect = (e) =>{
+    /*
+    const [value,setValue]=useState('');
+    const handleSelect=(e)=>{
         console.log(e);
+        setValue(e)
+        this.props.setFilter();
     }
+        */
+    render() {
 
-
-
-
-
-
-export const NavBar = () => {
     return (
         <Navbar bg="light" expand="lg" style={{zIndex:'2'}}>
-            <Navbar.Brand href="#home">Maalem</Navbar.Brand>
+            
+            <Navbar.Brand href="/home">Maalem</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto" onSelect={handleSelect}>
+                <Nav className="mr-auto" onSelect={this.props.handler}>
                     <NavDropdown title="Langue" id="basic-nav-dropdown">
                         <NavDropdown.Item eventKey="Français" >Français</NavDropdown.Item>
                         <NavDropdown.Item eventKey="Anglais" >Anglais</NavDropdown.Item>
@@ -48,7 +44,7 @@ export const NavBar = () => {
                         <NavDropdown.Item eventKey="L'être humain">L'être humain</NavDropdown.Item>
                         <NavDropdown.Item eventKey="Éthique et politique">Éthique et politique</NavDropdown.Item>
                     </NavDropdown>
-                    <Container triggerText={'Poser une question'} onSubmit={onSubmit}/>
+                    <Container triggerText={'Poser une question'}/>
                 </Nav>
                 <Nav className='.mr-auto'>                   
                     <Nav.Link href="http://localhost:9000/auth/logout" >DÉCONNECTEZ-VOUS</Nav.Link> 
@@ -57,4 +53,5 @@ export const NavBar = () => {
             </Navbar.Collapse>
         </Navbar>
     )
+    }
 }
