@@ -12,6 +12,8 @@ const onSubmit = (event) => {
   console.log(event.target.email.value);
 };
 
+
+
   export default class Feed extends React.Component {
 
     constructor() {
@@ -22,6 +24,7 @@ const onSubmit = (event) => {
       };
     }
 
+
     async componentDidMount() {
       const response = await fetch(`http://localhost:9000/1/cards`);
       const json = await response.json();
@@ -31,11 +34,22 @@ const onSubmit = (event) => {
     }
 
     render() {
+      let filter = this.props.filter;
+
+      let filteredCards = this.state.cards.filter(
+        function(card) {
+          if(filter == 'Aucun filtre') {return true}
+          else{return card.subject == filter}                  
+        }
+      );
+
+      let filteredCardsCount = filteredCards.length;
+
       return (
         <div>
           <div style={{marginTop:'20px'}}>
             <Button variant="primary">
-            {this.props.filter} <Badge variant="primary">N/A</Badge>
+            {filter} <Badge variant="primary">{filteredCardsCount}</Badge>
             </Button>            
             <Button variant="primary" style={{position: 'absolute', right: '30px'}}>
             Points <Badge variant="primary">N/A</Badge>
@@ -44,7 +58,7 @@ const onSubmit = (event) => {
           
           <div>            
             {
-              this.state.cards.map((card, i) => (
+              filteredCards.map((card, i) => (
                 <Card
                   no = {i}
                   author = {card.author}
