@@ -1,14 +1,18 @@
 import React from 'react';
+import { Button } from 'react-bootstrap';
 const Trigger = ({ triggerText, buttonRef, showModal }) => {
   return (
-    <button
-      className="btn btn-lg btn-danger center modal-button"
+    <Button
+      variant="outline-success"
+      style={{marginLeft:'30px'}}
       ref={buttonRef}
       onClick={showModal}
-      style={{float: 'right',margin: '3rem'}}
     >
       {triggerText}
-    </button>
+    </Button>
   );
 };
 export default Trigger;
+
+
+ 

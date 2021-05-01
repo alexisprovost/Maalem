@@ -3,6 +3,8 @@ import { render } from 'react-dom';
 import Boutons from "../boutons/script";
 import Card from '../cartes/script';
 import { Container } from '../Popup/Container';
+import { ListGroup, Button} from 'react-bootstrap';
+import { Badge} from 'react-bootstrap';
 
 const onSubmit = (event) => {
   event.preventDefault(event);
@@ -26,8 +28,10 @@ const onSubmit = (event) => {
     render() {
       return (
         <div>
-          <div className="formHolder">
-            <Container triggerText={'Poser une Question'} onSubmit={onSubmit}/>
+          <div>
+          <Button variant="success" style={{marginTop:'20px'}}>
+           {} <Badge variant="success">9</Badge>
+          </Button>
           </div>
           <div>            
             {
@@ -39,12 +43,15 @@ const onSubmit = (event) => {
                   subject = {card.subject}
                   reward = {card.reward}
                   title = {card.title}
-                  img = {'url(' + card.image[0] + ')'}
+                  img = {card.image}
                 />
               ))
             }
           </div>
-          <Boutons />
+          <div>
+            
+          </div>
+
         </div>
       )
     }

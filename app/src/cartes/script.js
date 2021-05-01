@@ -1,5 +1,8 @@
 import React from 'react';
 import "./style.css";
+import { ListGroup, Button, ListGroupItem, Carousel} from 'react-bootstrap';
+import { Card as crrr} from 'react-bootstrap';
+
 
 class Card extends React.Component {
   constructor(props) {
@@ -347,47 +350,54 @@ class Card extends React.Component {
   }
 
 
-
   render() {
 
 
 
-    return /*#__PURE__*/ (
+    return (
+      <div 
+        id = {"card" + this.props.no}
+        className = {"card color" + this.props.no}
+        onMouseDown = {this.handleDown}
+        onMouseMove = {this.handleMove}
+        onMouseUp = {this.handleUp}
+        onMouseLeave = {this.handleUp}
+        onTouchStart = {this.handleTouchStart}
+        onTouchMove = {this.handleTouchMove}
+        onTouchEnd = {this.handleTouchEnd}
+        style = {{
+          position: 'absolute',
+          zIndex: 0,
+          //backgroundImage: this.props.img,
+          marginTop: '50px'
 
-      
-      React.createElement("div", {
-          id: "card" + this.props.no,
-          className: "card color" + this.props.no,
-          style: {
-            backgroundImage: this.props.img,
-            position: 'absolute',
-            zIndex: 0,
-            marginTop: '150px'
-          },
-          
-          onMouseDown: this.handleDown,
-          onMouseMove: this.handleMove,
-          onMouseUp: this.handleUp,
-          onMouseLeave: this.handleUp,
-          onTouchStart: this.handleTouchStart,
-          onTouchMove: this.handleTouchMove,
-          onTouchEnd: this.handleTouchEnd
-        },
-        
+        }}
+      >
+        <Carousel>
 
-        <div>
-          <div>{this.props.title}</div>
-          <div>{this.props.subject}</div>
-          <div>{this.props.description}</div>
-          <div>{this.props.reward}</div>
-          <div>{this.props.author}</div>
-        </div>
-        
-        
-      )
-      
+          {this.props.img.map(element =>
+            <Carousel.Item>
+              <img
+                className="d-block w-100"
+                src={"https://picsum.photos/300/400"}
+                alt="First slide"
+              />
+            </Carousel.Item>
+          )}
+
+        </Carousel>
+
+        <crrr style={{ width: '300px', backgroundColor: '#f2f2f2', marginTop: '0px' }}>
+          <crrr.Body>
+            <crrr.Title>{this.props.title}</crrr.Title>
+            <crrr.Text>{this.props.description}</crrr.Text>          
+          </crrr.Body>
+        </crrr>
+
+      </div>
+
     );
-
+         
   }
 }
 export default Card;

@@ -4,6 +4,7 @@ import Foot from './components/Foot';
 import Sidechat from './components/Sidechat';
 import Feed from './components/Feed';
 
+
 import { Container, Row, Col} from 'react-bootstrap';
 
 export default function MainPage() {
@@ -23,7 +24,6 @@ export default function MainPage() {
             </Col>
           </Row>
         </div>
-        <Foot />
       </div>  
     );
 }
