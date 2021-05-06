@@ -37,7 +37,7 @@ export default class MainPage extends React.Component {
               <Col xs="3" style={{backgroundColor:"#ececec", height: "89vh", "z-index":"1"} }>
                 <Container className="themed-container" fluid={true}><Sidechat/></Container>
               </Col>
-              <Col style={{backgroundColor: "f7f7f7", height: "89vh"}}>
+              <Col id= "cardContainer" style={{backgroundColor: "f7f7f7", height: "89vh"}}>
                 <Container className="themed-container" fluid={true}>
                   <Feed filter={this.state.filter}/>
 
