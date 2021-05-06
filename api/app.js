@@ -14,10 +14,14 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 //Express init
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+  cors: {
+    origin: '*',
+  }
+});
 
 //Settings for cors
-var whitelist = ['http://localhost:3000', 'http://localhost:9000', 'http://localhost:9000/socket.io']
+var whitelist = ['http://localhost:3000','http://localhost:3000/', 'http://localhost:9000','http://localhost:9000/', 'http://localhost:9000/socket.io', 'http://localhost:9000/auth', 'http://localhost:9000/socket.io/']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -80,7 +84,7 @@ app.get('/auth/logout', (req, res) => {
   res.redirect("http://localhost:3000/home");
 })
 
-app.get('/auth', isLoggedIn, function (req, res) {
+app.get('/auth', function (req, res) {
   res.json(req.user);
 });
 
