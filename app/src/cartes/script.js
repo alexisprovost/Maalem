@@ -125,7 +125,7 @@ class Card extends React.Component {
           let swipedRight = true;
           console.log("right");
               var div= document.createElement("div");
-              div.className += "overlay";
+              div.className += "card-overlay";
               document.getElementById("cardContainer").appendChild(div);
           this.setState({
               showCard: false,

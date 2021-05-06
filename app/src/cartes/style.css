@@ -60,7 +60,7 @@
   background-color: aqua;
 }
 
-.overlay {
+.card-overlay {
   overflow: hidden;
   background-color:black;
   position: absolute;

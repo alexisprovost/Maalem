@@ -14,9 +14,3 @@
     height: 100%;
   }
 }
-
-@media (min-width: 480px) and (max-width: 1200px) {
-  .chat-container {
-    width: 60%;
-  }
-}
