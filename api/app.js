@@ -17,7 +17,7 @@ const server = http.createServer(app);
 const io = socketio(server);
 
 //Settings for cors
-var whitelist = ['http://localhost:3000', 'http://localhost:9000']
+var whitelist = ['http://localhost:3000', 'http://localhost:9000', 'http://localhost:9000/socket.io']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -108,8 +108,12 @@ app.use(function (err, req, res, next) {
 
 //Socket IO
 io.on('connect', (socket) => {
+  console.log("socket io");
+
   socket.on('join', ({ name, room }, callback) => {
     const { error, user } = addUser({ id: socket.id, name, room });
+
+    console.log("new join:" + name);
 
     if(error) return callback(error);
 
