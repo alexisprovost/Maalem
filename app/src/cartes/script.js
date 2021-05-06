@@ -125,6 +125,7 @@ class Card extends React.Component {
           let swipedRight = true;
           console.log("right");
           this.setState({
+              showCard: false,
               restX,
               restY,
               limit,
@@ -351,11 +352,7 @@ class Card extends React.Component {
 
 
   render() {
-
-
-
-    return (
-      <div 
+    return (<div 
         id = {"card" + this.props.no}
         className = {"card color" + this.props.no}
         onMouseDown = {this.handleDown}
@@ -373,8 +370,9 @@ class Card extends React.Component {
 
         }}
       >
-        <Carousel>
-
+    {this.state.showCard === true?  
+    <div>
+    <Carousel>
           {this.props.img.map(element =>
             <Carousel.Item>
               <img
@@ -393,9 +391,9 @@ class Card extends React.Component {
             <crrr.Text>{this.props.description}</crrr.Text>          
           </crrr.Body>
         </crrr>
-
       </div>
-
+      : null}
+</div>
     );
          
   }

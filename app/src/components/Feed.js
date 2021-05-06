@@ -13,8 +13,8 @@ const onSubmit = (event) => {
 };
 
 
-
   export default class Feed extends React.Component {
+
 
     constructor() {
       super();
@@ -34,8 +34,8 @@ const onSubmit = (event) => {
     }
 
     render() {
+      
       let filter = this.props.filter;
-
       let filteredCards = this.state.cards.filter(
         function(card) {
           if(filter == 'Aucun filtre') {return true}
@@ -44,7 +44,7 @@ const onSubmit = (event) => {
       );
 
       let filteredCardsCount = filteredCards.length;
-
+      
       return (
         <div>
           <div style={{marginTop:'20px'}}>
@@ -67,7 +67,7 @@ const onSubmit = (event) => {
                   reward = {card.reward}
                   title = {card.title}
                   img = {card.image}
-               />
+               /> 
               ))
             }
           </div>

@@ -30,6 +30,7 @@
   -webkit-transform: perspective(800px);
   transform: perspective(800px);
   background-size: 100% auto;
+  user-select: none;
 }
 
 .text { 
