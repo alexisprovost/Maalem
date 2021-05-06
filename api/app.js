@@ -1,7 +1,6 @@
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-const cors = require('cors');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 
@@ -15,18 +14,6 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-
-//Settings for cors
-var whitelist = ['http://localhost:3000', 'http://localhost:9000', 'http://localhost:9000/socket.io']
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
-}
 
 //Connection to DB
 require('./initDB')();
@@ -96,7 +83,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //Init routes for api
-app.use('/1/', cors(corsOptions), require('./routes/api'));
+app.use('/1/', require('./routes/api'));
 
 // error handling middleware
 app.use(function (err, req, res, next) {
