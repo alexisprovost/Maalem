@@ -80,7 +80,7 @@ app.get('/auth/logout', (req, res) => {
   res.redirect("http://localhost:3000/home");
 })
 
-app.get('/auth', isLoggedIn, function (req, res) {
+app.get('/auth', function (req, res) {
   res.json(req.user);
 });
 
