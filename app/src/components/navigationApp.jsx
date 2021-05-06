@@ -2,6 +2,8 @@ import React,{useState} from 'react';
 import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
 import { Container } from '../Popup/Container';
 
+import App from './popup.jsx';
+
 export class NavBar extends React.Component {
 
     /*
@@ -44,7 +46,8 @@ export class NavBar extends React.Component {
                         <NavDropdown.Item eventKey="L'être humain">L'être humain</NavDropdown.Item>
                         <NavDropdown.Item eventKey="Éthique et politique">Éthique et politique</NavDropdown.Item>
                     </NavDropdown>
-                    <Container triggerText={'Poser une question'}/>
+                    {/*<Container triggerText={'Poser une question'}/>*/}
+                    <App />
                 </Nav>
                 <Nav className='.mr-auto'>                   
                     <Nav.Link href="http://localhost:9000/auth/logout" >DÉCONNECTEZ-VOUS</Nav.Link> 
