@@ -7,7 +7,6 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-import Switch from 'react-bootstrap/esm/Switch';
 
 export default function App() {
   return (    

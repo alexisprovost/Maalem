@@ -1,5 +1,4 @@
 import { useState } from 'react'
-import emailjs from 'emailjs-com'
 
 const initialState = {
   name: '',
@@ -7,13 +6,12 @@ const initialState = {
   message: '',
 }
 export const Contact = (props) => {
-  const [{ name, email, message }, setState] = useState(initialState)
+  const [{ message }, setState] = useState(initialState)
 
   const handleChange = (e) => {
     const { name, value } = e.target
     setState((prevState) => ({ ...prevState, [name]: value }))
   }
-  const clearState = () => setState({ ...initialState })
 
   const handleSubmit = (e) => {
     e.preventDefault()

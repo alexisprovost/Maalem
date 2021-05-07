@@ -1,7 +1,6 @@
 import React from 'react';
 import "./style.css";
-import { ListGroup, Button, ListGroupItem, Carousel} from 'react-bootstrap';
-import { Card as crrr} from 'react-bootstrap';
+import { Carousel, Card as QuestionCard} from 'react-bootstrap';
 
 
 class Card extends React.Component {
@@ -356,6 +355,7 @@ class Card extends React.Component {
   render() {
     return (<div 
         id = {"card" + this.props.no}
+        key = {this.props.no}
         className = {"card color" + this.props.no}
         onMouseDown = {this.handleDown}
         onMouseMove = {this.handleMove}
@@ -387,12 +387,12 @@ class Card extends React.Component {
 
         </Carousel>
 
-        <crrr style={{ width: '300px', backgroundColor: '#f2f2f2', marginTop: '0px' }}>
-          <crrr.Body className='card-body'>
-            <crrr.Title>{this.props.title}</crrr.Title>
-            <crrr.Text>{this.props.description}</crrr.Text>          
-          </crrr.Body>
-        </crrr>
+        <QuestionCard style={{ width: '300px', height: '100px', backgroundColor: '#e1e3e1', marginTop: '0px' }}>
+          <QuestionCard.Body className='card-body'>
+            <QuestionCard.Title>{this.props.title}</QuestionCard.Title>
+            <QuestionCard.Text>{this.props.description}</QuestionCard.Text>          
+          </QuestionCard.Body>
+        </QuestionCard>
       </div>
       : null}
 </div>
