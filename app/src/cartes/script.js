@@ -124,6 +124,9 @@ class Card extends React.Component {
           let damping = 0.06;
           let swipedRight = true;
           console.log("right");
+              var div= document.createElement("div");
+              div.className += "card-overlay";
+              document.getElementById("cardContainer").appendChild(div);
           this.setState({
               showCard: false,
               restX,
@@ -159,7 +162,6 @@ class Card extends React.Component {
           let move = false;
           let damping = 0.06;
           let swipedLeft = true;
-          console.log("Left");
           this.setState({
             showCard: false,
             restX,
@@ -386,7 +388,7 @@ class Card extends React.Component {
         </Carousel>
 
         <crrr style={{ width: '300px', backgroundColor: '#f2f2f2', marginTop: '0px' }}>
-          <crrr.Body>
+          <crrr.Body className='card-body'>
             <crrr.Title>{this.props.title}</crrr.Title>
             <crrr.Text>{this.props.description}</crrr.Text>          
           </crrr.Body>

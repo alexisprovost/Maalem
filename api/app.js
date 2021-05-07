@@ -4,6 +4,10 @@ const socketio = require('socket.io');
 const cors = require('cors');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
+const passportSocketIo = require("passport.socketio");
+var cookieParser = require('cookie-parser');
+
+
 
 //Req
 require('./passport-setup.js');
@@ -14,10 +18,14 @@ const { addUser, removeUser, getUser, getUsersInRoom } = require('./users');
 //Express init
 const app = express();
 const server = http.createServer(app);
-const io = socketio(server);
+const io = socketio(server, {
+  cors: {
+    origin: '*',
+  }
+});
 
 //Settings for cors
-var whitelist = ['http://localhost:3000', 'http://localhost:9000', 'http://localhost:9000/socket.io']
+var whitelist = ['http://localhost:3000','http://localhost:3000/', 'http://localhost:9000','http://localhost:9000/', 'http://localhost:9000/socket.io', 'http://localhost:9000/auth', 'http://localhost:9000/socket.io/']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
@@ -31,10 +39,12 @@ var corsOptions = {
 //Connection to DB
 require('./initDB')();
 
+app.use(cookieParser())
+
 //Cookie name and key
 app.use(cookieSession({
   name: 'session',
-  keys: ['19d8539b0d7942a5a6dfdeaf6803ca27', '84714838c7da4797bbe0f911b291d309']
+  keys: ['19d8539b0d7942a5a6dfdeaf6803ca27']
 }))
 
 //Check if user id logged in for API access 
@@ -107,6 +117,15 @@ app.use(function (err, req, res, next) {
 });
 
 //Socket IO
+
+/*//Start of socket io for chat
+io.use(passportSocketIo.authorize({
+  cookieParser: cookieParser, // the same middleware you registrer in express
+  key: 'session', // the name of the cookie where express/connect stores its session_id
+  secret: '19d8539b0d7942a5a6dfdeaf6803ca27', // the session_secret to parse the cookie
+  store: cookieSession
+}));*/
+
 io.on('connect', (socket) => {
   console.log("socket io");
 
