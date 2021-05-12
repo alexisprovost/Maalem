@@ -1,17 +1,7 @@
 import React from 'react';
-import { render } from 'react-dom';
 import Boutons from "../boutons/script";
 import Card from '../cartes/script';
-import { Container } from '../Popup/Container';
-import { ListGroup, Button, Spinner} from 'react-bootstrap';
-import { Badge} from 'react-bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-
-const onSubmit = (event) => {
-  event.preventDefault(event);
-  console.log(event.target.name.value);
-  console.log(event.target.email.value);
-};
+import { Button, Badge } from 'react-bootstrap';
 
   export default class Feed extends React.Component {
 
@@ -32,7 +22,7 @@ const onSubmit = (event) => {
 
       this.setState({ 
         cards: json,
-        isLoaded: response.status == 200
+        isLoaded: response.status === 200
       });
     }
 
@@ -41,22 +31,23 @@ const onSubmit = (event) => {
       let filter = this.props.filter;
       let filteredCardsCount = 'Loading';
       let filteredCards = [];
-      let cardPlaceHolder = <Spinner animation="border" variant="primary"/>;
+      let cardPlaceHolder = <div style={{display: 'flex', justifyContent: 'center', marginTop: '200px'}}>Loading</div>;
       
-      if(this.state.isLoaded == true){
+      if(this.state.isLoaded === true){
         filteredCards = this.state.cards.filter(
           function(card) {
-            if(filter == 'Aucun filtre') {return true}
-            else{return card.subject == filter}                 
+            if(filter === 'Aucun filtre') {return true}
+            else{return card.subject === filter}                 
           }
         );
           
         filteredCardsCount = filteredCards.length; 
-        if(filteredCardsCount == 0) {
-          cardPlaceHolder = 'Revenez plus tard lorsque nous aurons d\'autres questions!'
+        if(filteredCardsCount === 0) {
+          cardPlaceHolder = <div style={{display: 'flex', justifyContent: 'center', marginTop: '200px'}}>Revenez plus tard lorsque nous aurons d'autres questions!</div>
         }else{
           cardPlaceHolder = filteredCards.map((card, i) => (
             <Card
+              key = {i}
               no = {i}
               author = {card.author}
               description = {card.description}
@@ -67,9 +58,9 @@ const onSubmit = (event) => {
            /> 
           ))
         }      
-      }else if(this.state.isLoaded == false){
+      }else if(this.state.isLoaded === false){
         filteredCardsCount = 'N/A';
-        cardPlaceHolder = 'Échec de la récupération des cartes à partir de l\'API. Si vous êtes enseignant, c\'est probablement parce que vous n\'avez pas initialisé correctement le serveur. Dans ce cas, veuillez relire le fichier \'readme.md\'. Merci pour votre compréhension.';
+        cardPlaceHolder = <div style={{display: 'flex', justifyContent: 'center', marginTop: '200px'}}>Échec de la récupération des cartes à partir de l'API.<br />Si vous êtes enseignant, c'est probablement parce que vous n'avez pas initialisé correctement le serveur.<br />Dans ce cas, veuillez relire le fichier 'readme.md'.<br />Merci pour votre compréhension.</div>;
       }
 
      

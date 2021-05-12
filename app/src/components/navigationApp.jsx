@@ -1,6 +1,5 @@
-import React,{useState} from 'react';
+import React from 'react';
 import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
-import { Container } from '../Popup/Container';
 
 import App from './popup.jsx';
 
