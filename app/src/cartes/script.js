@@ -2,7 +2,8 @@ import React from 'react';
 import "./style.css";
 import { ListGroup, Button, ListGroupItem, Carousel} from 'react-bootstrap';
 import { Card as crrr} from 'react-bootstrap';
-
+import {Chat} from '../components/Chat/Chat';
+import {changeRoom} from '../components/Chat/Chat'
 
 class Card extends React.Component {
   constructor(props) {
@@ -127,6 +128,8 @@ class Card extends React.Component {
               var div= document.createElement("div");
               div.className += "card-overlay";
               document.getElementById("cardContainer").appendChild(div);
+/////////////////////////////////////////////////////////////////////////////
+          changeRoom('this.state.subject');
           this.setState({
               showCard: false,
               restX,
