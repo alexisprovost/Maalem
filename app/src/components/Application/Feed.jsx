@@ -1,5 +1,5 @@
 import React from 'react';
-import Card from '../../cartes/script';
+import Card from './cartes/script';
 import { Button, Badge } from 'react-bootstrap';
 
   export default class Feed extends React.Component {

@@ -1,11 +1,8 @@
 import React from 'react';
-import "./style.css";
-import { ListGroup, Button, ListGroupItem, Carousel} from 'react-bootstrap';
-import { Card as crrr} from 'react-bootstrap';
-import {Chat} from '../components/Application/Chat/Chat';
-import {changeRoom} from '../components/Application/Chat/Chat'
-import { Card as QuestionCard} from 'react-bootstrap';
+import { Carousel, Card as QuestionCard} from 'react-bootstrap';
+import {changeRoom} from '../Chat/Chat'
 
+import "./style.css";
 
 class Card extends React.Component {
   constructor(props) {
