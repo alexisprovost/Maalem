@@ -1,7 +1,7 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
 
-import App from './popup.jsx';
+import {MyQuestionModal} from './popup.jsx';
 
 export class NavBar extends React.Component {
 
@@ -46,7 +46,7 @@ export class NavBar extends React.Component {
                         <NavDropdown.Item eventKey="Éthique et politique">Éthique et politique</NavDropdown.Item>
                     </NavDropdown>
                     {/*<Container triggerText={'Poser une question'}/>*/}
-                    <App />
+                    <MyQuestionModal />
                 </Nav>
                 <Nav className='.mr-auto'>                   
                     <Nav.Link href="http://localhost:9000/auth/logout" >DÉCONNECTEZ-VOUS</Nav.Link> 

@@ -4,7 +4,7 @@ import { ListGroup, Button, ListGroupItem, Carousel} from 'react-bootstrap';
 import { Card as crrr} from 'react-bootstrap';
 import {Chat} from '../components/Chat/Chat';
 import {changeRoom} from '../components/Chat/Chat'
-import { Carousel, Card as QuestionCard} from 'react-bootstrap';
+import { Card as QuestionCard} from 'react-bootstrap';
 
 
 class Card extends React.Component {
