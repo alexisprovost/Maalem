@@ -1,6 +1,5 @@
 import React from 'react';
-import Boutons from "../boutons/script";
-import Card from '../cartes/script';
+import Card from '../../cartes/script';
 import { Button, Badge } from 'react-bootstrap';
 
   export default class Feed extends React.Component {
@@ -81,7 +80,10 @@ import { Button, Badge } from 'react-bootstrap';
           </div>
           
           <div>
-            <Boutons />
+            <div style={{marginTop: '575px', textAlign: 'center'}}>
+              <Button variant="danger" style={{width: '150px', marginRight: '10px'}}>Ignorer</Button>
+              <Button variant="success" style={{width: '150px', marginLeft: '10px'}}>Répondre</Button>                    
+            </div>
           </div>
 
         </div>

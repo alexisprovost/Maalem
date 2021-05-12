@@ -1,7 +1,7 @@
 import React from 'react';
-import { NavBar } from './components/navigationApp.jsx';
-import Sidechat from './components/Sidechat';
-import Feed from './components/Feed';
+import { NavBar } from './components/Application/NavigationApp.jsx';
+import Sidechat from './components/Application/Sidechat.jsx';
+import Feed from './components/Application/Feed.jsx';
 
 import { Container, Row, Col} from 'react-bootstrap';
 

@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Navigation } from './components/navigationHome'
-import { Header } from './components/header'
-import { Features } from './components/features'
-import { Team } from './components/Team'
-import { Contact } from './components/contact'
-import JsonData from './data/data.json'
+import { Navigation } from './components/Home/NavigationHome'
+import { Header } from './components/Home/Header'
+import { Features } from './components/Home/Features'
+import { Team } from './components/Home/Team'
+import { Contact } from './components/Home/Contact'
+import JsonData from './components/Home/data.json'
 import SmoothScroll from 'smooth-scroll'
 
 export const scroll = new SmoothScroll('a[href*="#"]', {

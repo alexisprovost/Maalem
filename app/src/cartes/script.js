@@ -2,8 +2,8 @@ import React from 'react';
 import "./style.css";
 import { ListGroup, Button, ListGroupItem, Carousel} from 'react-bootstrap';
 import { Card as crrr} from 'react-bootstrap';
-import {Chat} from '../components/Chat/Chat';
-import {changeRoom} from '../components/Chat/Chat'
+import {Chat} from '../components/Application/Chat/Chat';
+import {changeRoom} from '../components/Application/Chat/Chat'
 import { Card as QuestionCard} from 'react-bootstrap';
 
 
