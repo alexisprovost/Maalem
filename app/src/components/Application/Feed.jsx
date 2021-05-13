@@ -46,6 +46,7 @@ import { Button, Badge } from 'react-bootstrap';
         }else{
           cardPlaceHolder = filteredCards.map((card, i) => (
             <Card
+              if = {card._id}
               key = {i}
               no = {i}
               author = {card.author}

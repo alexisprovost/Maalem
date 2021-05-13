@@ -1,5 +1,6 @@
 import React from 'react';
 import { Navbar, Nav, NavDropdown} from 'react-bootstrap';
+import UserProfile from '../../UserProfile';
 
 import {MyQuestionModal} from './Popup.jsx';
 
@@ -37,6 +38,9 @@ export class NavBar extends React.Component {
                             <NavDropdown.Item eventKey="Éthique et politique">Éthique et politique</NavDropdown.Item>
                         </NavDropdown>
                         <MyQuestionModal />
+                    </Nav>
+                    <Nav className='.mr-auto'>                   
+                        <Nav.Link href="Javascript:void(0)" >Bonjour {UserProfile.getProfile().displayName}</Nav.Link> 
                     </Nav>
                     <Nav className='.mr-auto'>                   
                         <Nav.Link href="http://localhost:9000/auth/logout" >DÉCONNECTEZ-VOUS</Nav.Link> 
