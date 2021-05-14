@@ -1,3 +1,5 @@
+
+
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
@@ -150,7 +152,7 @@ io.on('connect', (socket) => {
     const user = getUser(socket.id);
 
     io.to(user.room).emit('message', { user: user.name, text: message });
-
+    console.log(user.room+' ))))))))))))))))))))))))))))');
     callback();
   });
 

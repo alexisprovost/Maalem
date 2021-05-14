@@ -20,17 +20,23 @@ function changeRoom(roomName){
   alert('chnageRoom1 called to '+roomName)
 }
 
+var tempName = 'null';
+
+if (tempName === 'null'){
+  tempName = Math.random().toString(36).substring(7);
+}
+
+
 const Chat = ({ location }) => {
-  const [name, setName] = useState('');
+  let [name, setName] = useState('');
   const [room, setRoom] = useState('');
   const [users, setUsers] = useState('');
   const [message, setMessage] = useState('');
   const [messages, setMessages] = useState([]);
-
+  
   useEffect(() => {
-    let r = Math.random().toString(36).substring(7);
-    const name = r;
     let room = roomTempName;
+    let name = tempName;
     alert('room is now '+room);
     socket = io(ENDPOINT);
     setRoom(room);
