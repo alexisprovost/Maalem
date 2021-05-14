@@ -40,7 +40,50 @@ export class MyQuestionModal extends React.Component{
 
   handleCheckbox = (event) => {
     const isChecked = !this.state.aleatoire;
-    this.setState({aleatoire: isChecked})
+    this.setState({aleatoire: isChecked});
+    if(isChecked){
+      this.setState({photos: ['https://picsum.photos/300/400','https://picsum.photos/300/400','"https://picsum.photos/300/400']});
+    }
+  }
+
+  onInputChange = (event) => {
+    switch(event.target.name){
+      case 'Titre': this.setState({titre: event.target.value}); break;
+      case 'Sujet': this.setState({sujet: event.target.value}); break;
+      case 'Description': this.setState({description: event.target.value}); break;
+      case 'Recompense': this.setState({recompense: event.target.value}); break;
+    }
+    if(event.target.name.includes('images')){
+
+      const positionImage = parseInt(event.target.name[event.target.name.length - 1]);
+
+      const images = this.state.photos;
+      
+      images[positionImage] = event.target.value;
+
+      this.setState({photos: images});
+
+    }
+    
+  }
+
+  onSubmit = () => {
+
+    let _data = {
+      title: this.state.titre,
+      subject: this.state.sujet,
+      description: this.state.description,
+      images: this.state.photos,
+      author: 'foo',
+      rewards: 0
+    }
+
+    fetch('http://localhost:9000/1/cards', {
+      method: "POST",
+      body: JSON.stringify(_data),
+      headers: {"Content-type": "application/json; charset=UTF-8"}
+    })
+    this.handleModalShowHide();
   }
 
   render(){
@@ -66,12 +109,12 @@ export class MyQuestionModal extends React.Component{
 
               <Form.Group>
                 <Form.Label>Titre</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control type="text" name="Titre" onChange = {(event) => this.onInputChange(event)}  />
               </Form.Group>
 
               <Form.Group>
                     <Form.Label>Sujet</Form.Label>
-                    <Form.Control as="select">
+                    <Form.Control as="select" name="Sujet" onChange = {(event) => this.onInputChange(event)}>
                         <option></option>
                         <option>Français</option>
                         <option>Anglais</option>
@@ -91,12 +134,12 @@ export class MyQuestionModal extends React.Component{
 
               <Form.Group>
                 <Form.Label>Description</Form.Label>
-                <Form.Control type="text" />
+                <Form.Control type="text" name="Description" onChange = {(event) => this.onInputChange(event)}/>
               </Form.Group>
 
               <Form.Group>
                 <Form.Label>Récompense</Form.Label>
-                <Form.Control type="number" />
+                <Form.Control type="number" name="Recompense" onChange = {(event) => this.onInputChange(event)}/>
               </Form.Group>
 
               <Form.Group>
@@ -110,12 +153,7 @@ export class MyQuestionModal extends React.Component{
                     <Fragment key={`${photoURL}~${index}`}>
                       <div className="form-group col-sm-6">
                         <InputGroup className="mb-3">
-                          <InputGroup.Prepend>
-                            <InputGroup.Text id="basic-addon3">
-                              https://i.imgur.com/
-                            </InputGroup.Text>
-                          </InputGroup.Prepend>
-                          <FormControl id="basic-url" aria-describedby="basic-addon3" />
+                          <FormControl id="basic-url" name={'images' + index} value={photoURL} aria-describedby="basic-addon3" onChange={(event) => this.onInputChange(event)}/>
                         </InputGroup>
                       </div>
                       <div className="form-group col-sm-2">
@@ -143,6 +181,7 @@ export class MyQuestionModal extends React.Component{
                 aria-label="option 1" 
                 label="Cochez pour générer des images aléatoires (uniquement pour tester)" 
                 onChange={() => this.handleCheckbox()}
+                name="Check"
               />          
 
             </Form>
@@ -150,7 +189,7 @@ export class MyQuestionModal extends React.Component{
 
           <Modal.Footer>
             <Button variant="danger" onClick={() => this.handleModalShowHide()}>Annuler</Button>
-            <Button variant="success">Soumettre</Button>
+            <Button variant="success" onClick={() => this.onSubmit()}>Soumettre</Button>
           </Modal.Footer>
         </Modal>
       </>

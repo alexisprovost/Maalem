@@ -54,7 +54,7 @@ import { Button, Badge } from 'react-bootstrap';
               subject = {card.subject}
               reward = {card.reward}
               title = {card.title}
-              img = {card.image}
+              img = {card.images}
            /> 
           ))
         }      

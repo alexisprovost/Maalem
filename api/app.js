@@ -145,7 +145,7 @@ io.on('connect', (socket) => {
 
     socket.join(user.room);
 
-    socket.emit('message', { user: 'admin', text: `${user.name}, bienvenu dans le salon ${user.room}.`});
+    socket.emit('message', { user: 'admin', text: `${user.name}, bienvenue dans le salon ${user.room}.`});
     socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} a rejoint!` });
 
     io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });

@@ -12,8 +12,8 @@ const Cardschema = new Schema({
     description: {
         type: String
     },
-    comments: [{
-        url: String
+    images: [{
+        type: String
     }],
     author: {
         type: String

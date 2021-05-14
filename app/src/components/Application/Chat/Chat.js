@@ -16,6 +16,7 @@ const ENDPOINT = 'http://localhost:9000/';
 
 let socket;
 
+//var username = prompt("Please enter your name:");
 var username = "User";
 var roomTempName = "Salon Principal";
 
