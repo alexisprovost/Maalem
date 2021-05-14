@@ -5,19 +5,26 @@ import io from "socket.io-client";
 import Messages from '../Messages/Messages';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
+import UserProfile from '../../../UserProfile';
 
 import './Chat.css';
+
+let r = Math.random().toString(36).substring(7);
+const name = r;
 
 const ENDPOINT = 'http://localhost:9000/';
 
 let socket;
 
-var room = "one";
-var roomTempName = "one";
+var username = "User";
+var roomTempName = "Salon Principal";
 
 function changeRoom(roomName){
-  roomTempName = roomName;
-  alert('chnageRoom1 called to '+roomName)
+  roomTempName = "card 1";
+}
+
+function changeName(username){
+  roomTempName = username;
 }
 
 var tempName = 'null';
@@ -35,8 +42,9 @@ const Chat = ({ location }) => {
   const [messages, setMessages] = useState([]);
   
   useEffect(() => {
+    
+    const name = username;
     let room = roomTempName;
-    let name = tempName;
     alert('room is now '+room);
     socket = io(ENDPOINT);
     setRoom(room);
@@ -60,8 +68,11 @@ const Chat = ({ location }) => {
 }, []);
 
   function changeRoom(roomName){
-    roomTempName = roomName;
-    alert('chnageRoom called')
+    setRoom(roomName);
+  }
+
+  function changeName(username){
+    setName(username);
   }
 
   const sendMessage = (event) => {

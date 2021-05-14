@@ -2,6 +2,7 @@ import React from 'react';
 import { NavBar } from './components/Application/NavigationApp.jsx';
 import Sidechat from './components/Application/Sidechat.jsx';
 import Feed from './components/Application/Feed.jsx';
+import UserProfile from './UserProfile';
 
 import { Container, Row, Col} from 'react-bootstrap';
 
@@ -17,11 +18,20 @@ export default class MainPage extends React.Component {
       this.handler = this.handler.bind(this);
     }
 
-    componentDidMount(){
-      /*var api = 'http://localhost:9000/auth';*/
-
-      /*var curUser = fetch(api).then(response => response.json()).then(data => console.log(data));*/
-
+    async componentDidMount(){
+      const url = "http://localhost:9000/auth";
+      const response = await fetch(url, {
+        method: 'GET',
+        credentials: 'include'
+      });
+      try {
+        const data = await response.json();
+        UserProfile.setProfile(data);
+        console.log(UserProfile.getProfile());
+      } catch (error) {
+        console.log("User is not loggedin redirecting...");
+        window.location.replace("/");
+      }
     }
 
     handler(newFilter) {

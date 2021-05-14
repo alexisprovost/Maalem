@@ -3,12 +3,10 @@
 const http = require('http');
 const express = require('express');
 const socketio = require('socket.io');
-const cors = require('cors');
 const passport = require('passport');
 const cookieSession = require('cookie-session');
 const passportSocketIo = require("passport.socketio");
 var cookieParser = require('cookie-parser');
-
 
 
 //Req
@@ -23,23 +21,32 @@ const server = http.createServer(app);
 const io = socketio(server, {
   cors: {
     origin: '*',
+    methods: [],
+    allowedHeaders: [],
+    exposedHeaders: [],
+    preflightContinue: true,
+    credentials:true
   }
 });
 
 //Settings for cors
-var whitelist = ['http://localhost:3000','http://localhost:3000/', 'http://localhost:9000','http://localhost:9000/', 'http://localhost:9000/socket.io', 'http://localhost:9000/auth', 'http://localhost:9000/socket.io/']
+var whitelist = ['http://localhost:3000','http://localhost:3000/', 'http://localhost:9000','http://localhost:9000/', 'http://localhost:9000/socket.io', 'http://localhost:9000/auth', 'http://localhost:9000/socket.io/', 'http://localhost:9000/auth/']
 var corsOptions = {
   origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
+    callback(null, true)
   }
 }
 
 //Connection to DB
 require('./initDB')();
+
+app.use((req, res, next) => {
+  res.append('Access-Control-Allow-Origin', ['*']);
+  res.append('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+  res.append('Access-Control-Allow-Headers', 'Content-Type');
+  res.append('Access-Control-Allow-Credentials', 'true');
+  next();
+});
 
 app.use(cookieParser())
 
@@ -108,7 +115,7 @@ app.use(express.static('public'));
 app.use(express.json());
 
 //Init routes for api
-app.use('/1/', cors(corsOptions), require('./routes/api'));
+app.use('/1/', require('./routes/api'));
 
 // error handling middleware
 app.use(function (err, req, res, next) {
@@ -140,8 +147,8 @@ io.on('connect', (socket) => {
 
     socket.join(user.room);
 
-    socket.emit('message', { user: 'admin', text: `${user.name}, welcome to room ${user.room}.`});
-    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!` });
+    socket.emit('message', { user: 'admin', text: `${user.name}, bienvenu dans le salon ${user.room}.`});
+    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} a rejoint!` });
 
     io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
 
