@@ -8,13 +8,15 @@ const addUser = ({ id, name, room }) => {
   console.log(existingUser +'^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 
   if(!name || !room) return { error: 'Username and room are required.' };
-  if(existingUser) return { error: 'Username is taken.' };
-
-  const user = { id, name, room };
-  
-  users.push(user);
-
-  return { user };
+  if(typeof existingUser !== 'undefined'){
+    console.log('existingUser is :' + typeof existingUser)
+    return {existingUser};
+  } else {
+    const user = { id, name, room };
+    users.push(user);
+    console.log('Pushed user is :' + user);
+    return { user };
+  }
 }
 
 const removeUser = (id) => {
