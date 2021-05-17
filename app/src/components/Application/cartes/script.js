@@ -123,12 +123,7 @@ class Card extends React.Component {
           let move = false;
           let damping = 0.06;
           let swipedRight = true;
-          console.log("right");
-              var div= document.createElement("div");
-              div.className += "card-overlay";
-              document.getElementById("cardContainer").appendChild(div);
-/////////////////////////////////////////////////////////////////////////////
-          changeRoom('this.state.subject');
+          this.handleRightSwipe('card'+this.props.no);
           this.setState({
               showCard: false,
               restX,
@@ -329,6 +324,14 @@ class Card extends React.Component {
         });
 
     }
+  }
+
+  handleRightSwipe(roomName){
+    var div= document.createElement("div");
+    div.className += "card-overlay";
+    document.getElementById("cardContainer").appendChild(div);
+    changeRoom(roomName);
+    console.log(this.props.no);
   }
 
   animate() {

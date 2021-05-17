@@ -139,16 +139,17 @@ io.on('connect', (socket) => {
   console.log("socket io");
 
   socket.on('join', ({ name, room }, callback) => {
+    socket.leaveAll();
     const user = addUser({ id: socket.id, name, room });
     console.log(typeof user)
     
     console.log("new join:" +user.name+ ', '+ user.room);
-console.log('socket joined: '+ user.room.trim().toLowerCase()+'.')
-let roomName = user.room;
-console.log('roomName is '+typeof roomName)
-console.log()
+    console.log('socket joined: '+ user.room.trim().toLowerCase()+'.')
+    let roomName = user.room;
+    console.log('roomName is '+typeof roomName)
     //if(error) return callback(error);
-    socket.join(roomName);
+    
+    socket.join(user.room); 
     console.log('Socket is at: '+socket.rooms.has('salon principal') + ', '+socket.rooms.has('card 1') + ', '+ JSON.stringify(socket.rooms, null, 4));
     
     socket.emit('message', { user: 'admin', text: `${user.name}, bienvenue dans le salon ${user.room}.`});
@@ -163,7 +164,7 @@ console.log()
     console.log('Socket is at: '+socket.rooms.has('salon principal') + ', '+socket.rooms.has('card 1'));
     const user = getUser(name);
     io.emit('message', {text: `${user.room} + ${user.name} a envoyer le message!` });
-    io.to(user.room.trim().toLowerCase()).emit('message', { user: user.name, text: message });
+    io.to(user.room).emit('message', { user: user.name, text: message });
     callback();
   });
 

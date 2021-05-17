@@ -1,5 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { Modal, Button, Form, InputGroup, FormControl} from 'react-bootstrap';
+import {changeRoom} from './Chat/Chat'
 
 
 export class MyQuestionModal extends React.Component{
@@ -81,6 +82,10 @@ export class MyQuestionModal extends React.Component{
       headers: {"Content-type": "application/json; charset=UTF-8"}
     })
     this.handleModalShowHide();
+    var div= document.createElement("div");
+    div.className += "card-overlay";
+    document.getElementById("cardContainer").appendChild(div);
+    changeRoom('essai');//changer variable ici
   }
 
   render(){

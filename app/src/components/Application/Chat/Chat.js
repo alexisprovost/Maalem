@@ -20,7 +20,7 @@ var username = prompt('Mettre votre nom:');
 var roomTempName = "Salon Principal";
 
 function changeRoom(roomName){
-  roomTempName = "card 1";
+  roomTempName = roomName;
 }
 
 function changeName(username){
