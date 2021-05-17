@@ -8,6 +8,9 @@ const Userschema = new Schema({
     },
     balance: {
         type: Number
+    },
+    displayname: {
+        type: String
     }
 });
 

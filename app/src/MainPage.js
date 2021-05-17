@@ -13,7 +13,9 @@ export default class MainPage extends React.Component {
 
       this.state = {
         filter: 'Aucun filtre',
-        showChat: false
+        showChat: false,
+        userName: 'loading',
+        nbPoints: 'loading'
       }
 
       this.handler = this.handler.bind(this);
@@ -27,15 +29,23 @@ export default class MainPage extends React.Component {
         credentials: 'include'
       });
       try {
-        const data = await response.json();
-        UserProfile.setProfile(data);
-        console.log(UserProfile.getProfile());
-      } catch (error) {
-        console.log("User is not loggedin redirecting...");
+        const data = await response.json(); 
+        verifyUser(data.id, data.displayName)
+        setTimeout(() => {   
+        fetch('http://localhost:9000/1/users')
+        .then(response => response.json())
+        .then(users => {
+          users.map((user) => {
+            if(data.id = user.googleid){
+              this.setState({userName: user.displayname, nbPoints: user.balance})
+            }
+          })
+        }) }, 100);
+      }catch (error) {
         window.location.replace("/");
       }
-    }
-
+      
+  }
 
 
     handler(newFilter) {
@@ -55,16 +65,18 @@ export default class MainPage extends React.Component {
       return (
         <div>
           
-          <NavBar handler = {this.handler}/> 
+          <NavBar handler = {this.handler} displayName={this.state.userName}/> 
           <div>        
             <Row>
+              {/*
               <Col id= "chatContainer" xs="3" style={{backgroundColor:"#ececec", height: "89vh", zIndex:"1", "padding": "0"} }>
                 {<Button onClick={this.handleShowChat}>Chat</Button>}
                 {this.state.showChat ? <div className="themed-container" fluid={true}><Sidechat /></div> : ''}
               </Col>
+              */}
               <Col id= "cardContainer" style={{backgroundColor: "f7f7f7", height: "89vh"}}>
                 <Container className="themed-container" fluid={true}>
-                  <Feed filter={this.state.filter}/>
+                  <Feed filter={this.state.filter} points={this.state.nbPoints}/>
 
                 </Container>
               </Col>
@@ -74,4 +86,38 @@ export default class MainPage extends React.Component {
       );
     }
 
+}
+
+
+async function verifyUser(userID, displayName){      
+
+  let users = await fetch('http://localhost:9000/1/users').then(response => response.json());
+  
+  let myPromise = new Promise(function(myResolve, myReject) {
+    users.map((user) => {
+      if(userID === user.googleid){
+        myResolve('Found');
+      }
+    })
+    myReject('Not Found');
+  })
+
+  myPromise.then(
+    function(ok){
+    },
+    function(err){
+      let _data = {
+        googleid: userID.toString(),
+        balance: 100,
+        displayname: displayName
+      }
+  
+      fetch('http://localhost:9000/1/users', {
+        method: "POST",
+        body: JSON.stringify(_data),
+        headers: {"Content-type": "application/json; charset=UTF-8"}
+      })
+    }
+  )
+ 
 }

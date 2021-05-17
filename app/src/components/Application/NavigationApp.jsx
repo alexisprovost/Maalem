@@ -5,6 +5,9 @@ import UserProfile from '../../UserProfile';
 import {MyQuestionModal} from './Popup.jsx';
 
 export class NavBar extends React.Component {
+    constructor(props){
+        super(props);
+    }
 
     render() {
         return (
@@ -40,7 +43,7 @@ export class NavBar extends React.Component {
                         <MyQuestionModal />
                     </Nav>
                     <Nav className='.mr-auto'>                   
-                        <Nav.Link href="Javascript:void(0)" >Bonjour {UserProfile.getProfile().displayName}</Nav.Link> 
+                        <Nav.Link href="Javascript:void(0)" >Bonjour {this.props.displayName}</Nav.Link> 
                     </Nav>
                     <Nav className='.mr-auto'>                   
                         <Nav.Link href="http://localhost:9000/auth/logout" >DÉCONNECTEZ-VOUS</Nav.Link> 

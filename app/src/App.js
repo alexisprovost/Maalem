@@ -1,6 +1,7 @@
 import React from "react";
 import MainPage from './MainPage';
 import HomePage from './HomePage';
+import {Chat} from './components/Application/Chat/Chat';
 
 import {
   BrowserRouter as Router,
@@ -13,6 +14,7 @@ export default function App() {
       <Router>         
           <Route exact path="/home" component={HomePage} />
           <Route exact path="/app" component={MainPage} />
+          <Route exact path="/chat" component={Chat} />
           <Route exact path="/">
             <Redirect to="/home" />
           </Route>

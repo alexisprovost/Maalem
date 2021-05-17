@@ -31,7 +31,7 @@ class Card extends React.Component {
       ay: 0,
       vx: 0.0,
       vy: 0.0,
-      mass: 0.7,
+      mass: 0.2,
       damping: 0.8
     };
 
@@ -144,7 +144,7 @@ class Card extends React.Component {
               }, 10);
             });
 
-        } else if (mouseCurrPosX < width * 45 / 100) {
+        } else if (mouseCurrPosX < width * 20 / 100) {
           //check swipe gauche
           let restX, restY;
           if (mouseCurrPosX > width / 2) {
@@ -222,7 +222,7 @@ class Card extends React.Component {
         });
 
 
-        if (mouseCurrPosX > width - width * 10 / 100) {
+        if (mouseCurrPosX > width - width * 1000 / 100) {
           let restX, restY;
           if (mouseCurrPosX > width / 2) {
             restX = this.state.Posx * 5;

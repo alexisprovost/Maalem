@@ -5,8 +5,8 @@ import { Button, Badge } from 'react-bootstrap';
   export default class Feed extends React.Component {
 
 
-    constructor() {
-      super();
+    constructor(props) {
+      super(props);
       
       this.state = { 
         cards: [],
@@ -72,7 +72,7 @@ import { Button, Badge } from 'react-bootstrap';
             {filter} <Badge variant="primary">{filteredCardsCount}</Badge>
             </Button>            
             <Button variant="primary" style={{position: 'absolute', right: '30px'}}>
-            Points <Badge variant="primary">N/A</Badge>
+            Points <Badge variant="primary">{this.props.points}</Badge>
             </Button>
           </div>
           
