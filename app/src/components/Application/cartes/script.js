@@ -356,6 +356,28 @@ class Card extends React.Component {
 
 
   render() {
+    let images = this.props.img;
+
+    let verifiedImages = [];
+
+    images.map((element, index) =>{
+      let isValid = true;
+      try {
+        let url = new URL(element);
+      } catch (_) {
+        isValid = false; 
+      }
+
+      if(isValid){
+        verifiedImages.push(element);
+      }else{
+        verifiedImages.push('https://picsum.photos/300/400');
+      }
+    })
+   
+    
+  
+   
    
     return (<div 
         id = {"card" + this.props.no}
@@ -379,12 +401,14 @@ class Card extends React.Component {
     {this.state.showCard === true?  
     <div>
     <Carousel>
-          {this.props.img.map((element) =>
+          {verifiedImages.map((element) =>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src='https://picsum.photos/300/400'
+                src={element}
                 alt="First slide"
+                width="300" 
+                height="400"
               />
             </Carousel.Item>
           )}
