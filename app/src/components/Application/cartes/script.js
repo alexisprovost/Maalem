@@ -1,6 +1,6 @@
 import React from 'react';
 import { Carousel, Card as QuestionCard} from 'react-bootstrap';
-import {changeRoom} from '../Chat/Chat';
+import {changeRoom} from '../../Chat/Chat.js';
 import handleShowChat from '../../../MainPage';
 
 import "./style.css";

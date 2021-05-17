@@ -1,6 +1,6 @@
 import React, { useState, Fragment } from "react";
 import { Modal, Button, Form, InputGroup, FormControl} from 'react-bootstrap';
-import {changeRoom} from './Chat/Chat'
+import {changeRoom} from '../Chat/Chat'
 
 
 export class MyQuestionModal extends React.Component{

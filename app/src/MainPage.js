@@ -1,6 +1,6 @@
 import React from 'react';
 import { NavBar } from './components/Application/NavigationApp.jsx';
-import Sidechat from './components/Application/Sidechat.jsx';
+import Sidechat from './components/Chat/Sidechat.jsx';
 import Feed from './components/Application/Feed.jsx';
 import UserProfile from './UserProfile';
 

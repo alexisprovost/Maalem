@@ -1,7 +1,7 @@
 import React from "react";
 import MainPage from './MainPage';
 import HomePage from './HomePage';
-import {Chat} from './components/Application/Chat/Chat';
+import {Chat} from './components/Chat/Chat.js';
 
 import {
   BrowserRouter as Router,
