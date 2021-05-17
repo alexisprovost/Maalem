@@ -20,11 +20,7 @@
             "job": ""
         }
     ],
-    "Features": [{
-            "icon": "fa fa-mobile",
-            "title": "Facile à utiliser",
-            "text": "Notre plateforme possède une interface simple que vous pouvez y accéder facilement de votre téléphone portable."
-        },
+    "Features": [
         {
             "icon": "fa fa-comments-o",
             "title": "Chat intégré",

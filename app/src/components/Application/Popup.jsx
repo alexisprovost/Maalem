@@ -26,7 +26,7 @@ export class MyQuestionModal extends React.Component{
 
   handleAddFields = () => {
     const fields = this.state.photos;
-    fields.push({ pictureURL: ""});
+    fields.push("");
     this.setState({photos: fields});
   };
 
@@ -42,7 +42,7 @@ export class MyQuestionModal extends React.Component{
     const isChecked = !this.state.aleatoire;
     this.setState({aleatoire: isChecked});
     if(isChecked){
-      this.setState({photos: ['https://picsum.photos/300/400','https://picsum.photos/300/400','"https://picsum.photos/300/400']});
+      this.setState({photos: ['https://picsum.photos/300/400','https://picsum.photos/300/400','https://picsum.photos/300/400']});
     }
   }
 
@@ -54,17 +54,14 @@ export class MyQuestionModal extends React.Component{
       case 'Recompense': this.setState({recompense: event.target.value}); break;
     }
     if(event.target.name.includes('images')){
-
-      const positionImage = parseInt(event.target.name[event.target.name.length - 1]);
-
-      const images = this.state.photos;
-      
-      images[positionImage] = event.target.value;
-
-      this.setState({photos: images});
-
-    }
+      const fieldName = event.target.name;
+      const imageLinkIndex = parseInt(fieldName[fieldName.length - 1]);
     
+      let images = Object.assign({}, this.state.photos);
+      images[imageLinkIndex] = event.target.value;
+
+      this.setState({photos: Object.values(images)});
+    }
   }
 
   onSubmit = () => {
@@ -87,6 +84,7 @@ export class MyQuestionModal extends React.Component{
   }
 
   render(){
+    
     return(
       <>    
         <Button 
@@ -109,7 +107,7 @@ export class MyQuestionModal extends React.Component{
 
               <Form.Group>
                 <Form.Label>Titre</Form.Label>
-                <Form.Control type="text" name="Titre" onChange = {(event) => this.onInputChange(event)}  />
+                <Form.Control type="text" name="Titre" onChange = {(event) => this.onInputChange(event)} />
               </Form.Group>
 
               <Form.Group>
@@ -147,13 +145,18 @@ export class MyQuestionModal extends React.Component{
                 <br/>
               </Form.Group>  
 
-              {this.state.aleatoire ? '' :              
+              {             
                 this.state.photos.map((photoURL, index) =>(
                   <div className="form-row">
                     <Fragment key={`${photoURL}~${index}`}>
                       <div className="form-group col-sm-6">
                         <InputGroup className="mb-3">
-                          <FormControl id="basic-url" name={'images' + index} value={photoURL} aria-describedby="basic-addon3" onChange={(event) => this.onInputChange(event)}/>
+                        <InputGroup.Prepend>
+                          <InputGroup.Text id="basic-addon3">
+                            https://
+                          </InputGroup.Text>
+                        </InputGroup.Prepend>
+                          <FormControl id="basic-url" name={'images' + index} onChange={(event) => this.onInputChange(event)} value={this.state.photos[index]}/>
                         </InputGroup>
                       </div>
                       <div className="form-group col-sm-2">
