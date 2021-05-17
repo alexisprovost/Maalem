@@ -341,16 +341,21 @@ class Card extends React.Component {
       requestAnimationFrame(this.animate);
     }
     if (this.state.active) {
-      el.style.transform =
-        "translate(" +
-        this.state.Posx +
-        "px" +
-        "," +
-        this.state.Posy +
-        "px) rotate(" +
-        this.state.Posx / 9 +
-        "deg) perspective(800px)";
-      this.updateCard();
+      try{
+        el.style.transform =
+          "translate(" +
+          this.state.Posx +
+          "px" +
+          "," +
+          this.state.Posy +
+          "px) rotate(" +
+          this.state.Posx / 9 +
+          "deg) perspective(800px)";
+        this.updateCard();
+      }catch(e){
+        window.location.reload();
+        console.log('reloaded');
+      }
     }
   }
 
