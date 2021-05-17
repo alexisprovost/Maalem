@@ -356,6 +356,7 @@ class Card extends React.Component {
 
 
   render() {
+   
     return (<div 
         id = {"card" + this.props.no}
         key = {this.props.no}
@@ -378,11 +379,11 @@ class Card extends React.Component {
     {this.state.showCard === true?  
     <div>
     <Carousel>
-          {this.props.img.map(element =>
+          {this.props.img.map((element) =>
             <Carousel.Item>
               <img
                 className="d-block w-100"
-                src={"https://picsum.photos/300/400"}
+                src='https://picsum.photos/300/400'
                 alt="First slide"
               />
             </Carousel.Item>

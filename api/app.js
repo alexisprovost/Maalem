@@ -139,27 +139,31 @@ io.on('connect', (socket) => {
   console.log("socket io");
 
   socket.on('join', ({ name, room }, callback) => {
-    const { error, user } = addUser({ id: socket.id, name, room });
-
-    console.log("new join:" + name);
-
-    if(error) return callback(error);
-
-    socket.join(user.room);
-
-    socket.emit('message', { user: 'admin', text: `${user.name}, bienvenu dans le salon ${user.room}.`});
-    socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} a rejoint!` });
+    const user = addUser({ id: socket.id, name, room });
+    console.log(typeof user)
+    
+    console.log("new join:" +user.name+ ', '+ user.room);
+console.log('socket joined: '+ user.room.trim().toLowerCase()+'.')
+let roomName = user.room;
+console.log('roomName is '+typeof roomName)
+console.log()
+    //if(error) return callback(error);
+    socket.join(roomName);
+    console.log('Socket is at: '+socket.rooms.has('salon principal') + ', '+socket.rooms.has('card 1') + ', '+ JSON.stringify(socket.rooms, null, 4));
+    
+    socket.emit('message', { user: 'admin', text: `${user.name}, bienvenue dans le salon ${user.room}.`});
+    socket.to(user.room).emit('message', { user: 'admin', text: `${user.name} a rejoint!` });
 
     io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room) });
 
     callback();
   });
 
-  socket.on('sendMessage', (message, callback) => {
-    const user = getUser(socket.id);
-
-    io.to(user.room).emit('message', { user: user.name, text: message });
-    console.log(user.room+' ))))))))))))))))))))))))))))');
+  socket.on('sendMessage', ({message, name}, callback) => {
+    console.log('Socket is at: '+socket.rooms.has('salon principal') + ', '+socket.rooms.has('card 1'));
+    const user = getUser(name);
+    io.emit('message', {text: `${user.room} + ${user.name} a envoyer le message!` });
+    io.to(user.room.trim().toLowerCase()).emit('message', { user: user.name, text: message });
     callback();
   });
 
