@@ -49,12 +49,24 @@ const Chat = ({ location }) => {
     socket = io(ENDPOINT);
     setRoom(room);
     setName(name)
-
-    socket.emit('join', { name, room }, (error) => {
+    if (room != 'salon principal'){
+      try {
+        document.getElementById('chat-overlay').remove();
+      } catch (e) {
+        
+      }
+      
+      socket.emit('join', { name, room }, (error) => {
       if(error) {
         alert(error);
       }
     });
+  } else {
+    var div= document.createElement("div");
+    div.className += "chat-overlay";
+    document.getElementById("chatContainer").appendChild(div);
+  }
+    
   }, [ENDPOINT, location, roomTempName]);
   
   useEffect(() => {

@@ -49,7 +49,7 @@ export default class MainPage extends React.Component {
           <NavBar handler = {this.handler}/> 
           <div>        
             <Row>
-              <Col xs="3" style={{backgroundColor:"#ececec", height: "89vh", zIndex:"1", "padding": "0"} }>
+              <Col id= "chatContainer" xs="3" style={{backgroundColor:"#ececec", height: "89vh", zIndex:"1", "padding": "0"} }>
                 <div className="themed-container" fluid={true}><Sidechat/></div>
               </Col>
               <Col id= "cardContainer" style={{backgroundColor: "f7f7f7", height: "89vh"}}>
