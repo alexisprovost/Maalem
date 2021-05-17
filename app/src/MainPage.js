@@ -4,7 +4,7 @@ import Sidechat from './components/Application/Sidechat.jsx';
 import Feed from './components/Application/Feed.jsx';
 import UserProfile from './UserProfile';
 
-import { Container, Row, Col} from 'react-bootstrap';
+import { Container, Row, Col, Button} from 'react-bootstrap';
 
 export default class MainPage extends React.Component {
 
@@ -12,10 +12,12 @@ export default class MainPage extends React.Component {
       super(props);
 
       this.state = {
-        filter: 'Aucun filtre'
+        filter: 'Aucun filtre',
+        showChat: false
       }
 
       this.handler = this.handler.bind(this);
+      this.handleShowChat = this.handleShowChat.bind(this);
     }
 
     async componentDidMount(){
@@ -34,11 +36,18 @@ export default class MainPage extends React.Component {
       }
     }
 
+
+
     handler(newFilter) {
       this.setState({
         filter: newFilter
       })
 
+    }
+
+    handleShowChat(){
+      let isVisible = this.state.showChat;
+      this.setState({showChat: !isVisible});
     }
 
     render () {
@@ -50,7 +59,8 @@ export default class MainPage extends React.Component {
           <div>        
             <Row>
               <Col id= "chatContainer" xs="3" style={{backgroundColor:"#ececec", height: "89vh", zIndex:"1", "padding": "0"} }>
-                <div className="themed-container" fluid={true}><Sidechat/></div>
+                {<Button onClick={this.handleShowChat}>Chat</Button>}
+                {this.state.showChat ? <div className="themed-container" fluid={true}><Sidechat /></div> : ''}
               </Col>
               <Col id= "cardContainer" style={{backgroundColor: "f7f7f7", height: "89vh"}}>
                 <Container className="themed-container" fluid={true}>

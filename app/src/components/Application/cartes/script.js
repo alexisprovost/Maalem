@@ -1,6 +1,7 @@
 import React from 'react';
 import { Carousel, Card as QuestionCard} from 'react-bootstrap';
-import {changeRoom} from '../Chat/Chat'
+import {changeRoom} from '../Chat/Chat';
+import handleShowChat from '../../../MainPage';
 
 import "./style.css";
 
@@ -123,6 +124,7 @@ class Card extends React.Component {
           let move = false;
           let damping = 0.06;
           let swipedRight = true;
+          console.log(this.props.if);
           this.handleRightSwipe('card'+this.props.no);
           this.setState({
               showCard: false,
