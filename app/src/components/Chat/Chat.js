@@ -16,9 +16,8 @@ const ENDPOINT = 'http://localhost:9000/';
 
 let socket;
 
-var username = urlParams.get('user');
-console.log(username);
-var roomTempName = urlParams.get('room');
+let username = urlParams.get('user');
+let roomTempName = urlParams.get('room');
 
 function changeRoom(roomName){
   roomTempName = roomName;
