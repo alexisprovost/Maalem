@@ -138,6 +138,8 @@ class Card extends React.Component {
             console.log('google: ' + UserProfile.getProfile().id);
             console.log('name: ' + UserProfile.getProfile().displayName);
 
+            window.open('/chat?user=' + UserProfile.getProfile().displayName + '&room=' + this.props.cardID, '_blank').focus();
+
            }, 100);
          
  

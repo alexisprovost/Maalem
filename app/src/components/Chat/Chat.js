@@ -9,15 +9,16 @@ import UserProfile from '../../UserProfile';
 
 import './Chat.css';
 
-let r = Math.random().toString(36).substring(7);
-const name = r;
+const queryString = window.location.search;
+const urlParams = new URLSearchParams(queryString);
 
 const ENDPOINT = 'http://localhost:9000/';
 
 let socket;
 
-var username = '';
-var roomTempName = "Salon Principal";
+var username = urlParams.get('user');
+console.log(username);
+var roomTempName = urlParams.get('room');
 
 function changeRoom(roomName){
   roomTempName = roomName;
@@ -45,7 +46,7 @@ const Chat = ({ location }) => {
     
     const name = username;
     let room = roomTempName;
-    alert('room is now '+room);
+    //alert('room is now '+room);
     socket = io(ENDPOINT);
     setRoom(room);
     setName(name)
