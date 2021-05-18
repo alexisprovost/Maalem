@@ -347,9 +347,6 @@ class Card extends React.Component {
   }
 
   handleRightSwipe(roomName){
-    var div= document.createElement("div");
-    div.className += "card-overlay";
-    document.getElementById("cardContainer").appendChild(div);
     changeRoom(roomName);
 
   }
