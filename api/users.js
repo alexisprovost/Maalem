@@ -3,23 +3,21 @@ const users = [];
 const addUser = ({ id, name, room }) => {
   name = name.trim().toLowerCase();
   room = room.trim().toLowerCase();
-  console.log(name+'88888888888888888888888888')
   const existingUser = users.find((user) => user.name === name);
-  console.log(existingUser +'^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^');
 
   if(!name || !room) return { error: 'Username and room are required.' };
+
+  //cree un nouveau utilisateur si une personne avec le meme nom n'existe pas, sinon retourne l'utilisateur avec le nom deja pris
   if(typeof existingUser !== 'undefined'){
     existingUser.room = room;
-    console.log('existingUser is :' +typeof existingUser +', '+existingUser.name+', '+ existingUser.room)
     return existingUser;
   } else if (typeof existingUser === 'undefined'){
     const user = { id, name, room };
     users.push(user);
-    console.log('Pushed user is :' + user.name +', ' + user.room);
     return user;
   }
 }
-
+//enlever un utilisateur
 const removeUser = (id) => {
   const index = users.findIndex((user) => user.id === id);
 

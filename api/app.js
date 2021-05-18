@@ -102,7 +102,7 @@ app.get('/auth/logout', (req, res) => {
 app.get('/auth', function (req, res) {
   res.json(req.user);
 });
-
+//succes du roulement de l'API
 app.get('/', function (req, res) {
   res.json({
     status: 'success',
@@ -125,32 +125,13 @@ app.use(function (err, req, res, next) {
   });
 });
 
-//Socket IO
-
-/*//Start of socket io for chat
-io.use(passportSocketIo.authorize({
-  cookieParser: cookieParser, // the same middleware you registrer in express
-  key: 'session', // the name of the cookie where express/connect stores its session_id
-  secret: '19d8539b0d7942a5a6dfdeaf6803ca27', // the session_secret to parse the cookie
-  store: cookieSession
-}));*/
-
 io.on('connect', (socket) => {
-  console.log("socket io");
-
+  //traitement des differents evenements
   socket.on('join', ({ name, room }, callback) => {
     socket.leaveAll();
     const user = addUser({ id: socket.id, name, room });
-    console.log(typeof user)
-    
-    console.log("new join:" +user.name+ ', '+ user.room);
-    console.log('socket joined: '+ user.room.trim().toLowerCase()+'.')
-    let roomName = user.room;
-    console.log('roomName is '+typeof roomName)
-    //if(error) return callback(error);
-    
-    socket.join(user.room); 
-    console.log('Socket is at: '+socket.rooms.has('salon principal') + ', '+socket.rooms.has('card 1') + ', '+ JSON.stringify(socket.rooms, null, 4));
+    //joindre la salle de clavardage
+    socket.join(user.room);
     
     socket.emit('message', { user: 'admin', text: `${user.name}, bienvenue dans le salon ${user.room}.`});
     socket.to(user.room).emit('message', { user: 'admin', text: `${user.name} a rejoint!` });
@@ -162,14 +143,13 @@ io.on('connect', (socket) => {
 
   socket.on('sendMessage', ({message, name}, callback) => {
     const user = getUser(name);
-    //io.emit('message', {text: `${user.room} + ${user.name} a envoyer le message!` });
     io.to(user.room).emit('message', { user: user.name, text: message });
     callback();
   });
 
   socket.on('disconnect', () => {
     const user = removeUser(socket.id);
-
+//traitement de la deconnexion
     if(user) {
       io.to(user.room).emit('message', { user: 'Admin', text: `${user.name} has left.` });
       io.to(user.room).emit('roomData', { room: user.room, users: getUsersInRoom(user.room)});

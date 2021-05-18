@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-// create schema & model
+// les infromations qu'on passe a la base de donnees pour la carte
 const Cardschema = new Schema({
     title: {
         type: String

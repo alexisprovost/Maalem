@@ -5,7 +5,7 @@ const {
 const {
     config
 } = require('dotenv');
-
+//initialisation de la base de donnee
 module.exports = () => {
     config();
     const uri = process.env.DB_URI;
