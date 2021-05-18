@@ -12,9 +12,27 @@ const InfoBar = ({ room }) => (
       <h3>{room}</h3>
     </div>
     <div className="rightInnerContainer">
-      <a href="javascript:window.open('','_self').close();"><img src={closeIcon} alt="close icon" /></a>
+      <a href='#' onClick={resolveChat}><img src={closeIcon} alt="close icon" /></a>
     </div>
   </div>
 );
+
+const resolveChat = () =>{
+  //window.open('','_self').close();
+  
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  let room = urlParams.get('room');
+
+  let _data = {
+    id: room
+  }
+
+  fetch('http://localhost:9000/1/card', {
+    method: "DELETE",
+    body: JSON.stringify(_data),
+    headers: {"Content-type": "application/json; charset=UTF-8"}
+  })
+}
 
 export default InfoBar;
