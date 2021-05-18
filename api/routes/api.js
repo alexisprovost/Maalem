@@ -53,6 +53,15 @@ router.delete('/users/:id', function (req, res, next) {
     });
 });
 
+//Supprime la card dans la base de données
+router.delete('/card/:id', function (req, res, next) {
+    Card.findOneAndDelete({
+        _id: req.params.id
+    }).then(function (Card) {
+        res.send(Card);
+    });
+});
+
 router.get('/', function (req, res) {
     res.json({
         status: 'success',
