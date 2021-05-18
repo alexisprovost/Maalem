@@ -39,6 +39,7 @@ export default class MainPage extends React.Component {
           users.map((user) => {
             if(data.id === user.googleid){
               this.setState({userName: user.displayname, nbPoints: user.balance, googleID: data.id})
+              data.regid = user._id;
             }
           })
         })
