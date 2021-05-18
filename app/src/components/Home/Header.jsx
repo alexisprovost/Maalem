@@ -1,5 +1,6 @@
 export const Header = (props) => {
     return (
+      
       <header id='header'>
         <div className='intro' style={{backgroundImage: "url(" + 'https://images.unsplash.com/photo-1497032628192-86f99bcd76bc?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80' + ')'}}>
           <div className='overlay'>
@@ -23,5 +24,6 @@ export const Header = (props) => {
           </div>
         </div>
       </header>
+      /* Premiere partie de la page d'acceuil*/
     )
   }

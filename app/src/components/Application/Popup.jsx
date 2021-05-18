@@ -2,7 +2,7 @@ import React, { useState, Fragment } from "react";
 import { Modal, Button, Form, InputGroup, FormControl} from 'react-bootstrap';
 import {changeRoom} from '../Chat/Chat'
 
-
+//Formulaire pour poser une question
 export class MyQuestionModal extends React.Component{
 
   constructor(props){
@@ -75,17 +75,13 @@ export class MyQuestionModal extends React.Component{
       author: 'foo',
       rewards: 0
     }
-
+//envoit la question posee dans la base de donnees
     fetch('http://localhost:9000/1/cards', {
       method: "POST",
       body: JSON.stringify(_data),
       headers: {"Content-type": "application/json; charset=UTF-8"}
     })
     this.handleModalShowHide();
-    var div= document.createElement("div");
-    div.className += "card-overlay";
-    document.getElementById("cardContainer").appendChild(div);
-    changeRoom('essai');//changer variable ici
   }
 
   render(){
@@ -118,6 +114,7 @@ export class MyQuestionModal extends React.Component{
               <Form.Group>
                     <Form.Label>Sujet</Form.Label>
                     <Form.Control as="select" name="Sujet" onChange = {(event) => this.onInputChange(event)}>
+                      {/* Dropdown avec les options */}
                         <option></option>
                         <option>Français</option>
                         <option>Anglais</option>

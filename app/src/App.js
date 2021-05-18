@@ -8,7 +8,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
-
+//Router de l'app
 export default function App() {
   return (    
       <Router>         

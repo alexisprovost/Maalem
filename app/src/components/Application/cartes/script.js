@@ -134,14 +134,10 @@ class Card extends React.Component {
          // console.log(this.props.displayName);
           //GOOGLE ID
           //console.log(this.props.googleID);
-          console.log('carte' + this.props.cardID);
-            console.log('google: ' + UserProfile.getProfile().id);
-            console.log('name: ' + UserProfile.getProfile().displayName);
 
             window.open('/chat?user=' + UserProfile.getProfile().id + '&room=' + this.props.cardID, '_blank').focus();
 
            }, 100);
-         
  
           this.handleRightSwipe('card'+this.props.no);
           this.setState({
@@ -348,7 +344,6 @@ class Card extends React.Component {
 
   handleRightSwipe(roomName){
     changeRoom(roomName);
-
   }
 
   animate() {
@@ -432,7 +427,7 @@ class Card extends React.Component {
                 className="d-block w-100"
                 src={element}
                 alt="First slide"
-                width="300" 
+                width="3000" 
                 height="400"
               />
             </Carousel.Item>

@@ -12,7 +12,7 @@ export const Contact = (props) => {
     const { name, value } = e.target
     setState((prevState) => ({ ...prevState, [name]: value }))
   }
-
+//Pour nous contacter, sur la page d'acceuil
   const handleSubmit = (e) => {
     e.preventDefault()
     window.open('mailto:alectufenkjian@gmail.com?subject=Message&body=' + message);

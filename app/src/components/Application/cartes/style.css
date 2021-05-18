@@ -60,18 +60,3 @@
 .card-body{
   background-color: rgb(241, 243, 243);
 }
-
-.card-overlay {
-  overflow: hidden;
-  background-color:rgba(0, 0, 0, 0.4);
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  top: 0px;
-  left: 0px;
-  filter: blur(5px);
-  box-shadow: 0 3px 5px rgba(0, 0, 0, 0.3);
-  opacity: .5; /* in FireFox */ 
-  filter: alpha(opacity=50); /* in IE */
-}

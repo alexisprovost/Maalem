@@ -4,7 +4,7 @@ import onlineIcon from '../icons/onlineIcon.png';
 import closeIcon from '../icons/closeIcon.png';
 
 import './InfoBar.css';
-
+//Le top de notre chat, dans lequel on met le nom de la salle de clavardage
 const InfoBar = ({ room }) => (
   <div className="infoBar">
     <div className="leftInnerContainer">

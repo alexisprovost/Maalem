@@ -15,5 +15,5 @@ var UserProfile = (function () {
     }
 
 })();
-
+//informations de l'utilisateur
 export default UserProfile;

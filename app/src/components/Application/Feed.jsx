@@ -1,7 +1,7 @@
 import React from 'react';
 import Card from './cartes/script';
 import { Button, Badge } from 'react-bootstrap';
-
+//Feed est le regroupement des cartes
   export default class Feed extends React.Component {
 
 
@@ -41,7 +41,7 @@ import { Button, Badge } from 'react-bootstrap';
             else{return card.subject === filter}                 
           }
         );
-          
+          //display les cartes si il y en a
         filteredCardsCount = filteredCards.length; 
         if(filteredCardsCount === 0) {
           cardPlaceHolder = <div style={{display: 'flex', justifyContent: 'center', marginTop: '200px'}}>Revenez plus tard lorsque nous aurons d'autres questions!</div>
@@ -61,7 +61,7 @@ import { Button, Badge } from 'react-bootstrap';
               img = {card.images}
            /> 
           ))
-        }      
+        }      // dans ce elif, on regarde si le API a des problemes
       }else if(this.state.isLoaded === false){
         filteredCardsCount = 'N/A';
         cardPlaceHolder = <div style={{display: 'flex', justifyContent: 'center', marginTop: '200px'}}>Échec de la récupération des cartes à partir de l'API.<br />Si vous êtes enseignant, c'est probablement parce que vous n'avez pas initialisé correctement le serveur.<br />Dans ce cas, veuillez relire le fichier 'readme.md'.<br />Merci pour votre compréhension.</div>;
@@ -84,13 +84,6 @@ import { Button, Badge } from 'react-bootstrap';
             {cardPlaceHolder}
           </div>
           
-          <div>
-            <div style={{marginTop: '575px', textAlign: 'center'}}>
-              <Button variant="danger" style={{width: '150px', marginRight: '10px'}}>Ignorer</Button>
-              <Button variant="success" style={{width: '150px', marginLeft: '10px'}}>Répondre</Button>                    
-            </div>
-          </div>
-
         </div>
       )
     }

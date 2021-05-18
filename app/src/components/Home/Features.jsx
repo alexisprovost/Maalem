@@ -19,5 +19,6 @@ export const Features = (props) => {
         </div>
       </div>
     </div>
+    /*Deuxieme partie de la page d'acceuil*/
   )
 }

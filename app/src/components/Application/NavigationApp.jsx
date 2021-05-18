@@ -12,7 +12,9 @@ export class NavBar extends React.Component {
     render() {
         return (
             <Navbar bg="light" expand="lg" style={{zIndex:'2'}}>
-                
+                {/* 
+                Ici, on definit tous les noms de cours que l'application supporte, en les filtrant
+                */}
                 <Navbar.Brand href="/home">Maalem</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
@@ -43,9 +45,11 @@ export class NavBar extends React.Component {
                         <MyQuestionModal />
                     </Nav>
                     <Nav className='.mr-auto'>                   
+                    {/* Salutations au user */}
                         <Nav.Link href="Javascript:void(0)" >Bonjour {this.props.displayName}</Nav.Link> 
                     </Nav>
-                    <Nav className='.mr-auto'>                   
+                    <Nav className='.mr-auto'>       
+                    {/* Permet de logout */}            
                         <Nav.Link href="http://localhost:9000/auth/logout" >DÉCONNECTEZ-VOUS</Nav.Link> 
                     </Nav>
                     

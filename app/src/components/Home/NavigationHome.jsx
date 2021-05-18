@@ -2,6 +2,7 @@ import { Navbar, Nav} from 'react-bootstrap';
 
 export const Navigation = () => {
     return (
+        /*Navbar de la page d'acceuil */
         <Navbar bg="light" expand="lg">
             <Navbar.Brand href="#home">Maalem</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import './Input.css';
-
+//On prend le input de l'utilisateur dans le chat
 const Input = ({ setMessage, sendMessage, message }) => (
   <form className="form">
     <input

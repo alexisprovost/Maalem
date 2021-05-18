@@ -3,7 +3,7 @@ import React from 'react';
 import './Message.css';
 
 import ReactEmoji from 'react-emoji';
-
+//traitement individuel des messages envoyes et recus
 const Message = ({ message: { text, user }, name }) => {
   let isSentByCurrentUser = false;
 

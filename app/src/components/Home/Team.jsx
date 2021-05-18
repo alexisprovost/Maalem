@@ -1,5 +1,6 @@
 export const Team = (props) => {
   return (
+    /*PArtie de la page d'acceuil montrant l'equipe */
     <div id='team' className='text-center'>
       <div className='container'>
         <div className='col-md-8 col-md-offset-2 section-title' style={{maxWidth:'100%'}}>

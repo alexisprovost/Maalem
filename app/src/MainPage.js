@@ -7,7 +7,7 @@ import UserProfile from './UserProfile';
 import { Container, Row, Col, Button} from 'react-bootstrap';
 
 export default class MainPage extends React.Component {
-
+//La page principale de l'application, dans laquelle on a les cartes
     constructor(props){
       super(props);
 
