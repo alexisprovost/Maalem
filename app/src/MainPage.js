@@ -15,7 +15,8 @@ export default class MainPage extends React.Component {
         filter: 'Aucun filtre',
         showChat: false,
         userName: 'loading',
-        nbPoints: 'loading'
+        nbPoints: 'loading',
+        googleID: ''
       }
 
       this.handler = this.handler.bind(this);
@@ -36,14 +37,18 @@ export default class MainPage extends React.Component {
         .then(response => response.json())
         .then(users => {
           users.map((user) => {
-            if(data.id = user.googleid){
-              this.setState({userName: user.displayname, nbPoints: user.balance})
+            if(data.id === user.googleid){
+              this.setState({userName: user.displayname, nbPoints: user.balance, googleID: data.id})
             }
           })
-        }) }, 100);
+        })
+        UserProfile.setProfile(data); 
+    
+      }, 100);
       }catch (error) {
         window.location.replace("/");
       }
+      
       
   }
 
@@ -76,7 +81,7 @@ export default class MainPage extends React.Component {
               */}
               <Col id= "cardContainer" style={{backgroundColor: "f7f7f7", height: "89vh"}}>
                 <Container className="themed-container" fluid={true}>
-                  <Feed filter={this.state.filter} points={this.state.nbPoints}/>
+                  <Feed filter={this.state.filter} points={this.state.nbPoints} displayname={this.state.userName} googleid={this.state.id}/>
 
                 </Container>
               </Col>

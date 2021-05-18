@@ -23,6 +23,8 @@ import { Button, Badge } from 'react-bootstrap';
         cards: json,
         isLoaded: response.status === 200
       });
+
+      
     }
 
     render() {
@@ -46,7 +48,9 @@ import { Button, Badge } from 'react-bootstrap';
         }else{
           cardPlaceHolder = filteredCards.map((card, i) => (
             <Card
-              if = {card._id}
+              cardID = {card._id}
+              googleID = {this.props.googleID}
+              displayName = {this.props.userName}
               key = {i}
               no = {i}
               author = {card.author}
@@ -62,7 +66,7 @@ import { Button, Badge } from 'react-bootstrap';
         filteredCardsCount = 'N/A';
         cardPlaceHolder = <div style={{display: 'flex', justifyContent: 'center', marginTop: '200px'}}>Échec de la récupération des cartes à partir de l'API.<br />Si vous êtes enseignant, c'est probablement parce que vous n'avez pas initialisé correctement le serveur.<br />Dans ce cas, veuillez relire le fichier 'readme.md'.<br />Merci pour votre compréhension.</div>;
       }
-
+  
      
       
       return (

@@ -2,6 +2,7 @@ import React from 'react';
 import { Carousel, Card as QuestionCard} from 'react-bootstrap';
 import {changeRoom} from '../../Chat/Chat.js';
 import handleShowChat from '../../../MainPage';
+import UserProfile from '../../../UserProfile';
 
 import "./style.css";
 
@@ -124,7 +125,22 @@ class Card extends React.Component {
           let move = false;
           let damping = 0.06;
           let swipedRight = true;
-          console.log(this.props.if);
+
+          setTimeout(() => { 
+
+          //CARD ID
+          //console.log(this.props.cardID);
+          //DISPLAY NAME
+         // console.log(this.props.displayName);
+          //GOOGLE ID
+          //console.log(this.props.googleID);
+          console.log('carte' + this.props.cardID);
+            console.log('google: ' + UserProfile.getProfile().id);
+            console.log('name: ' + UserProfile.getProfile().displayName);
+
+           }, 100);
+         
+ 
           this.handleRightSwipe('card'+this.props.no);
           this.setState({
               showCard: false,
@@ -333,7 +349,7 @@ class Card extends React.Component {
     div.className += "card-overlay";
     document.getElementById("cardContainer").appendChild(div);
     changeRoom(roomName);
-    console.log(this.props.no);
+
   }
 
   animate() {
