@@ -1,7 +1,7 @@
 import React, { useState, Fragment } from "react";
 import { Modal, Button, Form, InputGroup, FormControl} from 'react-bootstrap';
 import {changeRoom} from '../Chat/Chat'
-
+import UserProfile from '../../UserProfile.js'
 //Formulaire pour poser une question
 export class MyQuestionModal extends React.Component{
 
@@ -72,7 +72,7 @@ export class MyQuestionModal extends React.Component{
       subject: this.state.sujet,
       description: this.state.description,
       images: this.state.photos,
-      author: 'foo',
+      author: UserProfile.getProfile().id,
       rewards: 0
     }
 //envoit la question posee dans la base de donnees
@@ -81,7 +81,12 @@ export class MyQuestionModal extends React.Component{
       body: JSON.stringify(_data),
       headers: {"Content-type": "application/json; charset=UTF-8"}
     })
+
+
+      window.open('/chat?user=' + UserProfile.getProfile().id +'&room=' + UserProfile.getProfile().id, '_blank').focus();
     this.handleModalShowHide();
+
+
   }
 
   render(){

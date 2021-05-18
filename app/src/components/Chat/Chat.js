@@ -15,7 +15,6 @@ const urlParams = new URLSearchParams(queryString);
 const ENDPOINT = 'http://localhost:9000/';
 
 let socket;
-
 let username = urlParams.get('user');
 let roomTempName = urlParams.get('room');
 

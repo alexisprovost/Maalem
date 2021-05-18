@@ -135,7 +135,7 @@ class Card extends React.Component {
           //GOOGLE ID
           //console.log(this.props.googleID);
 
-            window.open('/chat?user=' + UserProfile.getProfile().id + '&room=' + this.props.cardID + '&id='+ UserProfile.getProfile().regid, '_blank').focus();
+            window.open('/chat?user=' + UserProfile.getProfile().id +'&room='+ this.props.author , '_blank').focus();
 
            }, 100);
  
