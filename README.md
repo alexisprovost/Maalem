@@ -1,6 +1,8 @@
 # Maalem
 Application web d'aide scolaire
 
+![alt text](https://img.sshort.net/i/fUkz.jpg "Maalem")
+
 ## Installation version de Dev sur windows
 
 [Installer chocolatey](https://chocolatey.org/install)
