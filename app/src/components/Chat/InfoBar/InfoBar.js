@@ -18,12 +18,12 @@ const InfoBar = ({ room }) => (
 );
 
 const resolveChat = () =>{
-  //window.open('','_self').close();
+  window.open('','_self').close();
   
   const queryString = window.location.search;
   const urlParams = new URLSearchParams(queryString);
   let room = urlParams.get('room');
-
+/*
   let _data = {
     id: room
   }
@@ -33,6 +33,20 @@ const resolveChat = () =>{
     body: JSON.stringify(_data),
     headers: {"Content-type": "application/json; charset=UTF-8"}
   })
+*/
+/*
+  let _data2 = {
+    id: urlParams.get('id'),
+    balance: 50
+  }
+
+  fetch('http://localhost:9000/1/card', {
+    method: "PUT",
+    body: JSON.stringify(_data2),
+    headers: {"Content-type": "application/json; charset=UTF-8"}
+  })
+*/
+
 }
 
 export default InfoBar;
